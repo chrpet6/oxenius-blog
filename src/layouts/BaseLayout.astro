@@ -1,0 +1,192 @@
+---
+import '../styles/global.css';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description?: string;
+  theme?: 'default' | 'light';
+  noindex?: boolean;
+}
+
+const recentEssays = (await getCollection('essays', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+
+const {
+  title,
+  description = 'Essays by Christoffer Oxenius on how AI is changing go-to-market in B2B tech.',
+  theme = 'default',
+  noindex = false,
+} = Astro.props;
+const bodyClass = theme === 'light' ? 'theme-light' : '';
+const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: '/', label: 'About' },
+  { href: '/essays', label: 'Essays' },
+  { href: '/short-posts', label: 'Short posts' },
+  { href: '/playbooks', label: 'Playbooks' },
+  { href: '/tech-stack', label: 'Tech stack' },
+  { href: '/bookmarks', label: 'Bookmarks' },
+  { href: '/side-projects', label: 'Side projects' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body class={bodyClass}>
+    <div class="site">
+      <header class="site-header">
+        <div class="site-header-inner">
+        <a href="/" class="wordmark" aria-label="Christoffer Oxenius — home">
+          <img src="/co%20signature%20v1%20black%20bg.png" alt="Christoffer Oxenius" />
+        </a>
+        <div class="menu-wrapper" id="menu">
+          <button
+            type="button"
+            class="menu-button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-controls="menu-panel"
+            id="menu-button"
+          >
+            Menu
+            <svg
+              class="chevron"
+              viewBox="0 0 14 14"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="3 5 7 9 11 5"></polyline>
+            </svg>
+          </button>
+          <nav class="menu-panel" id="menu-panel" aria-label="Primary">
+            {navLinks.map((link) => (
+              <a
+                href={link.href}
+                aria-current={
+                  link.href === '/'
+                    ? currentPath === '/' ? 'page' : undefined
+                    : currentPath.startsWith(link.href) ? 'page' : undefined
+                }
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+        </div>
+      </header>
+
+      <main class="site-main">
+        <slot />
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-footer-inner">
+          <nav class="footer-nav" aria-label="Footer">
+            <div class="footer-col footer-col--brand">
+              <a href="/" class="footer-wordmark" aria-label="Christoffer Oxenius — home">
+                <img src="/co%20signature%20v1%20white%20bg.png" alt="Christoffer Oxenius" />
+              </a>
+              <p class="footer-tagline">
+                One of the best B2B marketers in Sweden. A decade at Minna
+                Technologies (acq. Mastercard), Megadeals, and Sysarb.
+                Currently CPO at Njord, building an AI-native operating
+                system for complex sales.
+              </p>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-col-title">Writing</h3>
+              <ul>
+                <li><a href="/essays">Essays</a></li>
+                <li><a href="/short-posts">Short posts</a></li>
+                <li><a href="/playbooks">Playbooks</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-col-title">Resources</h3>
+              <ul>
+                <li><a href="/tech-stack">Tech stack</a></li>
+                <li><a href="/bookmarks">Bookmarks</a></li>
+                <li><a href="/side-projects">Side projects</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-col-title">Connect</h3>
+              <ul>
+                <li><a href="/">About</a></li>
+                <li>
+                  <a href="https://www.linkedin.com/in/christofferoxenius/" target="_blank" rel="noopener">LinkedIn</a>
+                </li>
+                <li>
+                  <a href="https://x.com/coxenius" target="_blank" rel="noopener">X</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h3 class="footer-col-title">Recent posts</h3>
+              <ul>
+                {recentEssays.map((essay) => (
+                  <li>
+                    <a href={`/essays/${essay.id}`}>{essay.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </nav>
+
+          <div class="footer-bottom">
+            <span class="footer-copy">&copy; {new Date().getFullYear()} Christoffer Oxenius. All rights reserved.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const wrapper = document.getElementById('menu');
+      const button = document.getElementById('menu-button');
+      if (wrapper && button) {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const open = wrapper.classList.toggle('open');
+          button.setAttribute('aria-expanded', String(open));
+        });
+        document.addEventListener('click', (e) => {
+          if (!wrapper.contains(e.target as Node)) {
+            wrapper.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            wrapper.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

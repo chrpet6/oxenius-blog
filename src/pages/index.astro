@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Christoffer Oxenius"
+  description="A decade building and scaling GTM, marketing, growth, and product across B2B SaaS, FinTech, and e-commerce."
+  theme="light"
+>
+  <div class="home-shell">
+    <section class="about-split">
+      <div class="about-split-text">
+        <h1>Christoffer Oxenius</h1>
+        <p>
+          Christoffer Oxenius (formerly Pettersson) is currently the CPO at <a href="https://njord.io" target="_blank" rel="noopener">Njord</a>,
+          building an AI-native operating system for complex sales.
+        </p>
+        <p>
+          He has spent the last decade building and scaling GTM, marketing,
+          growth, and product across B2B SaaS, FinTech, and e-commerce, and
+          is regarded as one of the best B2B marketers in Sweden.
+        </p>
+        <p>
+          He was the first full-time employee and later CMO at <a href="https://www.cnbc.com/2024/10/01/mastercard-to-buy-subscription-management-startup-minna-technologies.html" target="_blank" rel="noopener">Minna Technologies</a>, where he
+          helped grow the company from an early Swedish startup to a global
+          SaaS FinTech, from seed to Series B, and to around 80 people before
+          it was later acquired by Mastercard.<span class="bio-toggle"> <span class="bio-toggle-ellipsis">…</span> <a href="#" class="bio-toggle-link">More</a></span>
+        </p>
+        <p class="bio-extra" hidden>
+          Since then, he has served as CPO at <a href="https://www.megadeals.com/" target="_blank" rel="noopener">Megadeals</a>, helping grow ARR from
+          1M to 20M+ SEK in 12 months by co-building the offer, GTM strategy,
+          and demand engine, and as Head of Growth at <a href="https://www.di.se/digital/mjukvarubolaget-efter-kundrusningen-aggressiva-tillvaxtmal/" target="_blank" rel="noopener">Sysarb</a> during a year when
+          ARR grew from approximately 35M to 55M SEK and inbound booked
+          meetings increased 5x.
+        </p>
+        <p class="bio-extra" hidden>
+          He has also worked as CMO at <a href="https://www.breakit.se/artikel/35657/devotion-ska-satsa-pa-hundratals-saas-bolag-och-har-en-plan-for-att-gora-kvalitet-av-kvantitet" target="_blank" rel="noopener">Devotion Ventures</a>, leading
+          fractional CMO engagements across 10+ VC portfolio companies, helped
+          scale <a href="https://www.breakit.se/artikel/33185/mardrommen-for-spotify-storytel-och-netflix-anyfin-och-minna-technologies-gar-ihop-for-att-doda-abonnemangen" target="_blank" rel="noopener">Mina Tjänster</a> from 5,000 to 500,000 users, and built an <a href="https://www.instagram.com/karlexwatches/" target="_blank" rel="noopener">e-commerce brand</a> from
+          0 to approximately 2M SEK during university.
+        </p>
+        <p class="bio-extra" hidden>
+          He holds a Master's degree in Marketing from Gothenburg School of
+          Business, and a Bachelor's degree in Marketing from Luleå University
+          of Technology.
+        </p>
+        <p class="bio-extra" hidden>
+          Christoffer is regarded as one of the best B2B marketers in Sweden.
+          He has been interviewed by <a href="https://tonyhammarlund.io/christoffer-pettersson-12/" target="_blank" rel="noopener">Tony Hammarlund</a>, <a href="https://music.amazon.com.mx/podcasts/a922aa1b-a740-46f1-aaf0-c833b23a9af4/episodes/8539a2eb-abab-446c-aea2-1250a5afb187/the-breakout-growth-podcast-minna-technologies-cmo-christoffer-pettersson-explains-the-advantages-of-starting-b2c-and-then-pivoting-to-b2b" target="_blank" rel="noopener">Sean Ellis</a>
+          (author of <em>Hacking Growth</em>), the <a href="https://open.spotify.com/episode/3cq5nIJ3ko43SsTNwrofOQ" target="_blank" rel="noopener">11:FS FinTech Marketing Podcast</a>,
+          and <a href="https://medium.com/@rebelandbird/s%C3%A5-sprider-du-insikter-fr%C3%A5n-experimenti-avsnitt-4-av-growthpodden-ges-konkreta-tips-p%C3%A5-hur-du-50ba07ea4f13" target="_blank" rel="noopener">Growthpodden</a>,
+          and has guest blogged on <a href="https://www.11fs.com/article/what-does-effective-growth-marketing-look-like-for-b2b-in-the-2020s" target="_blank" rel="noopener">11:FS</a>.
+          He is also an active thought leader on <a href="https://www.linkedin.com/in/christofferoxenius/" target="_blank" rel="noopener">LinkedIn</a>, with over
+          10,000 followers.
+        </p>
+        <p class="bio-extra" hidden>
+          He writes and talks about B2B GTM, positioning, AI operations, and
+          what actually moves pipeline.
+        </p>
+        <h2 class="home-list-title">Thinking &amp; Writing</h2>
+        <ul class="home-list">
+          <li><a href="/essays">Essays</a></li>
+          <li><a href="/short-posts">Short posts</a></li>
+          <li><a href="/playbooks">Playbooks</a></li>
+          <li><a href="/tech-stack">Tech stack</a></li>
+          <li><a href="/bookmarks">Bookmarks</a></li>
+          <li><a href="/side-projects">Side projects</a></li>
+        </ul>
+      </div>
+      <figure class="about-split-image">
+        <img
+          src="/portrait.jpg"
+          alt="Christoffer Oxenius"
+          loading="eager"
+        />
+      </figure>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  const link = document.querySelector<HTMLAnchorElement>('.bio-toggle-link');
+  const ellipsis = document.querySelector<HTMLElement>('.bio-toggle-ellipsis');
+  const extras = document.querySelectorAll<HTMLElement>('.bio-extra');
+
+  link?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const expanded = link.textContent === 'Less';
+    extras.forEach((p) => {
+      p.hidden = expanded;
+    });
+    link.textContent = expanded ? 'More' : 'Less';
+    if (ellipsis) {
+      ellipsis.style.display = expanded ? '' : 'none';
+    }
+  });
+</script>

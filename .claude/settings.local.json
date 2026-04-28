@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:open-opportunity-949552.framer.app)",
+      "Bash(npm --version)",
+      "WebFetch(domain:www.lennysnewsletter.com)"
+    ]
+  }
+}

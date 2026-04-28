@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { fetchMetadata } from '../../lib/supadata';
+
+const TYPE_ILLUSTRATIONS: Record<string, string> = {
+  YouTube: '/illustration-youtube-video.png',
+  Podcast: '/illustration-podcast-episode.png',
+  LinkedIn: '/illustration-linkedin-post.png',
+  X: '/illustration-x%20post.png',
+};
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+const rawBookmarks = await getCollection('bookmarks', ({ data }) => !data.draft);
+
+const bookmarks = await Promise.all(
+  rawBookmarks.map(async (b) => {
+    const metadata = await fetchMetadata(b.data.href);
+    const date = metadata?.createdAt ? new Date(metadata.createdAt) : b.data.date;
+    const thumbnail =
+      b.data.image ?? TYPE_ILLUSTRATIONS[b.data.type] ?? '/gpu-rack.png';
+    return {
+      id: b.id,
+      title: b.data.title,
+      source: b.data.source,
+      type: b.data.type,
+      date,
+      thumbnail,
+    };
+  }),
+);
+
+bookmarks.sort((a, b) => b.date.getTime() - a.date.getTime());
+---
+
+<BaseLayout
+  title="Bookmarks — Christoffer Oxenius"
+  description="A running collection of podcast episodes, YouTube videos, and posts from LinkedIn and X worth saving."
+  theme="light"
+>
+  <div class="home-shell">
+    <section class="home-hero">
+      <h1>Bookmarks</h1>
+      <p>
+        A running collection of podcast episodes, YouTube videos, and posts
+        from LinkedIn and X worth saving. Mostly B2B GTM, AI, and how
+        software companies actually grow.
+      </p>
+    </section>
+
+    <section class="home-grid">
+      {bookmarks.map((b) => (
+        <a class="grid-card grid-card--bookmark" href={`/bookmarks/${b.id}`}>
+          <div class="grid-card-image">
+            <img src={b.thumbnail} alt="" loading="lazy" />
+            <span class="grid-card-badge">{b.type}</span>
+          </div>
+          <div class="grid-card-content">
+            <h3 class="grid-card-title">{b.title}</h3>
+            <p class="grid-card-description">{b.source} · {formatDate(b.date)}</p>
+          </div>
+        </a>
+      ))}
+    </section>
+  </div>
+</BaseLayout>

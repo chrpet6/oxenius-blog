@@ -1,0 +1,1728 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Design System — Christoffer Oxenius"
+  description="Internal design system reference for the GTM Predictions blog."
+  noindex
+>
+  <div class="ds-shell">
+    <header class="ds-header">
+      <p class="ds-eyebrow">Internal reference</p>
+      <h1>Design System</h1>
+      <p class="ds-lede">
+        Tokens, components, and patterns used across the blog. Hidden from
+        navigation and search engines.
+      </p>
+    </header>
+
+    <section class="ds-section">
+      <h2>Colors</h2>
+      <p class="ds-section-note">CSS variables defined in <code>:root</code> in <code>global.css</code>.</p>
+
+      <h3>Backgrounds</h3>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip ds-chip-border" style="background: #ffffff;"></div>
+          <div class="ds-swatch-name">--color-bg</div>
+          <div class="ds-swatch-value">#ffffff</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip ds-chip-border" style="background: #ffffff;"></div>
+          <div class="ds-swatch-name">--color-bg-card</div>
+          <div class="ds-swatch-value">#ffffff</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #f0f0f0;"></div>
+          <div class="ds-swatch-name">--color-bg-page-light</div>
+          <div class="ds-swatch-value">#f0f0f0</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #0a0a0a;"></div>
+          <div class="ds-swatch-name">--color-footer-bg</div>
+          <div class="ds-swatch-value">#0a0a0a</div>
+        </div>
+      </div>
+
+      <h3>Text</h3>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #000000;"></div>
+          <div class="ds-swatch-name">--color-text</div>
+          <div class="ds-swatch-value">#000000</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #1a1a1a;"></div>
+          <div class="ds-swatch-name">--color-text-soft</div>
+          <div class="ds-swatch-value">#1a1a1a</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #7c7c7c;"></div>
+          <div class="ds-swatch-name">--color-muted-darker</div>
+          <div class="ds-swatch-value">#7c7c7c</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #989898;"></div>
+          <div class="ds-swatch-name">--color-muted</div>
+          <div class="ds-swatch-value">#989898</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #d1d5db;"></div>
+          <div class="ds-swatch-name">--color-footer-text-strong</div>
+          <div class="ds-swatch-value">#d1d5db</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #6b7280;"></div>
+          <div class="ds-swatch-name">--color-footer-text</div>
+          <div class="ds-swatch-value">#6b7280</div>
+        </div>
+      </div>
+
+      <h3>UI</h3>
+      <div class="ds-color-grid">
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #e5e7eb;"></div>
+          <div class="ds-swatch-name">--color-subtle</div>
+          <div class="ds-swatch-value">#e5e7eb</div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch-chip" style="background: #000000;"></div>
+          <div class="ds-swatch-name">--color-link</div>
+          <div class="ds-swatch-value">#000000</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Typography</h2>
+      <p class="ds-section-note">
+        <strong>Geist</strong> is the primary sans for everything &mdash; UI, body,
+        and headlines (Medium / weight 500). <strong>Source Serif 4 italic</strong>
+        is reserved for the wordmark logo only.
+      </p>
+
+      <h3>Families</h3>
+      <div class="ds-font-grid">
+        <div class="ds-font">
+          <div class="ds-font-sample" style="font-family: 'Geist', sans-serif; font-weight: 500;">Aa</div>
+          <div class="ds-font-name">--font-sans / --font-display</div>
+          <div class="ds-font-value">Geist · 400, 500, 600, 700</div>
+        </div>
+        <div class="ds-font">
+          <div class="ds-font-sample" style="font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 600;">Aa</div>
+          <div class="ds-font-name">--font-serif</div>
+          <div class="ds-font-value">Source Serif 4 italic · wordmark only</div>
+        </div>
+      </div>
+
+      <h3>Scale</h3>
+      <div class="ds-type-stack">
+        <div class="ds-type">
+          <div class="ds-type-label">Essays hero · 42px / Geist 500 / -0.04em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 42px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.1;">Essays</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Essay title · 47px / Geist 500 / -0.03em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 47px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1;">A title for an essay</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Home hero (about) · 38px / Geist 500 / -0.04em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 38px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.1;">Christoffer Oxenius</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Page heading · 40px / Geist 500 / -0.03em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 40px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1;">A page heading</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">H2 · 28px / Geist 500 / -0.01em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 28px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3;">A section heading</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">H3 · 24px / Geist 500 / -0.04em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 24px; font-weight: 500; letter-spacing: -0.04em; line-height: 1.3;">A subsection</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Sublabel · 18px / Geist 500 / -0.01em</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3;">Thinking &amp; Writing</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Lead · 18px / Geist 600 / 1.4 line-height</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 600; line-height: 1.4;">A lead paragraph at the start of an essay sets the tone for what follows.</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Body · 16px / Geist 400 / 1.5 line-height</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.5;">Body text used throughout the site for paragraphs, descriptions, and most readable content. Comfortable reading at this size on most screens.</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">About body · 14px / Geist 400 / 1.6 line-height</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.6;">Compact body for the home / about column. Slightly smaller than essay body for higher density.</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Footer column title · 11px / Geist 600 / 0.1em uppercase</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #6b7280;">Section heading</div>
+        </div>
+        <div class="ds-type">
+          <div class="ds-type-label">Small / muted · 14px / Geist 400 / #989898</div>
+          <div class="ds-type-sample" style="font-family: 'Geist', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.5; color: #989898;">Small muted metadata like dates and read times.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Spacing</h2>
+      <p class="ds-section-note">4px base. Used for margins, padding, and gaps.</p>
+
+      <div class="ds-space-grid">
+        <div class="ds-space"><div class="ds-space-bar" style="width: 4px;"></div><div class="ds-space-name">4</div><div class="ds-space-value">0.25rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 8px;"></div><div class="ds-space-name">8 · xs</div><div class="ds-space-value">0.5rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 12px;"></div><div class="ds-space-name">12</div><div class="ds-space-value">0.75rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 16px;"></div><div class="ds-space-name">16 · sm</div><div class="ds-space-value">1rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 20px;"></div><div class="ds-space-name">20</div><div class="ds-space-value">1.25rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 24px;"></div><div class="ds-space-name">24 · md</div><div class="ds-space-value">1.5rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 32px;"></div><div class="ds-space-name">32 · lg</div><div class="ds-space-value">2rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 40px;"></div><div class="ds-space-name">40</div><div class="ds-space-value">2.5rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 48px;"></div><div class="ds-space-name">48 · xl</div><div class="ds-space-value">3rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 64px;"></div><div class="ds-space-name">64 · 2xl</div><div class="ds-space-value">4rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 80px;"></div><div class="ds-space-name">80 · 3xl</div><div class="ds-space-value">5rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 96px;"></div><div class="ds-space-name">96 · 4xl</div><div class="ds-space-value">6rem</div></div>
+        <div class="ds-space"><div class="ds-space-bar" style="width: 128px;"></div><div class="ds-space-name">128 · 5xl</div><div class="ds-space-value">8rem</div></div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Border Radius</h2>
+      <p class="ds-section-note">Used for cards, badges, buttons, and images.</p>
+
+      <div class="ds-radius-grid">
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 4px;"></div><div class="ds-radius-name">4 · sm</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 8px;"></div><div class="ds-radius-name">8</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 12px;"></div><div class="ds-radius-name">12 · md</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 16px;"></div><div class="ds-radius-name">16 · lg</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 20px;"></div><div class="ds-radius-name">20 · xl</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 24px;"></div><div class="ds-radius-name">24 · 2xl</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 28px;"></div><div class="ds-radius-name">28 · 3xl</div></div>
+        <div class="ds-radius"><div class="ds-radius-box" style="border-radius: 999px;"></div><div class="ds-radius-name">full</div></div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Shadows</h2>
+      <p class="ds-section-note">Used sparingly. Lifted UI only — cards on hover, badges over imagery.</p>
+
+      <div class="ds-shadow-grid">
+        <div class="ds-shadow">
+          <div class="ds-shadow-box" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);"></div>
+          <div class="ds-shadow-name">xs</div>
+          <div class="ds-shadow-value">0 1px 3px rgba(0,0,0,0.04)</div>
+        </div>
+        <div class="ds-shadow">
+          <div class="ds-shadow-box" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);"></div>
+          <div class="ds-shadow-name">sm · badge</div>
+          <div class="ds-shadow-value">0 2px 8px rgba(0,0,0,0.06)</div>
+        </div>
+        <div class="ds-shadow">
+          <div class="ds-shadow-box" style="box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);"></div>
+          <div class="ds-shadow-name">md · card hover</div>
+          <div class="ds-shadow-value">0 12px 32px rgba(0,0,0,0.06)</div>
+        </div>
+        <div class="ds-shadow">
+          <div class="ds-shadow-box" style="box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);"></div>
+          <div class="ds-shadow-name">lg</div>
+          <div class="ds-shadow-value">0 24px 60px rgba(0,0,0,0.08)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Components</h2>
+      <p class="ds-section-note">Reusable UI building blocks defined in <code>global.css</code>.</p>
+
+      <h3>Wordmark (header)</h3>
+      <div class="ds-component">
+        <span class="wordmark">Oxenius<sup>®</sup></span>
+      </div>
+
+      <h3>Wordmark (footer)</h3>
+      <div class="ds-component" style="background: #0a0a0a;">
+        <span class="footer-wordmark" style="display: inline-flex;">Oxenius<sup>®</sup></span>
+      </div>
+
+      <h3>Menu Button</h3>
+      <div class="ds-component">
+        <button class="menu-button" type="button">
+          Menu
+          <svg
+            class="chevron"
+            viewBox="0 0 14 14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="3 5 7 9 11 5"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <h3>Badge</h3>
+      <div class="ds-component">
+        <span class="home-essay-badge home-essay-badge--inline" style="display: inline-flex; background: #f5f5f4; box-shadow: none;">Essay</span>
+      </div>
+
+      <h3>Summarize buttons (icon-only)</h3>
+      <div class="ds-component">
+        <div style="display: flex; gap: 0.5rem;">
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="Claude" title="Claude">
+            <img class="essay-summarize-icon" src="/Claude_AI_symbol.svg" alt="" aria-hidden="true" />
+          </a>
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="ChatGPT" title="ChatGPT">
+            <img class="essay-summarize-icon" src="/chat%20gpt%20logo.svg" alt="" aria-hidden="true" />
+          </a>
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="Perplexity" title="Perplexity">
+            <img class="essay-summarize-icon" src="/perlexity-logo.svg" alt="" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      <h3>Bullet list (homepage sections)</h3>
+      <div class="ds-component">
+        <ul class="home-list">
+          <li><a href="#">Essays</a></li>
+          <li><a href="#">Short posts</a></li>
+          <li><a href="#">Playbooks</a></li>
+          <li><a href="#">Tech stack</a></li>
+        </ul>
+      </div>
+
+      <h3>Body link</h3>
+      <div class="ds-component">
+        <p style="font-size: 16px; line-height: 1.5; margin: 0;">
+          Body text with <a href="#" style="text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; color: #000;">an underlined link</a> rendered the same way as in essays and the about page.
+        </p>
+      </div>
+
+      <h3>Avatar</h3>
+      <div class="ds-component">
+        <img src="/avatar.png" alt="Christoffer Oxenius" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; background: #e5e7eb;" />
+      </div>
+
+      <h3>Page intro</h3>
+      <div class="ds-component">
+        <section class="intro" style="margin: 0;">
+          <h1>A page heading</h1>
+          <p>
+            A short muted paragraph that introduces the page below. Used on
+            stub pages like Playbooks and Tech stack.
+          </p>
+        </section>
+      </div>
+
+      <h3>Essay author byline</h3>
+      <div class="ds-component">
+        <div class="essay-author" style="margin: 0; max-width: none;">
+          <img class="essay-author-avatar" src="/avatar.png" alt="" width="48" height="48" />
+          <div>
+            <div class="essay-author-name">Christoffer Oxenius</div>
+            <div class="essay-author-published">Published Apr 26, 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Essay summarize bar</h3>
+      <div class="ds-component">
+        <div class="essay-summarize" style="margin: 0;">
+          <span class="essay-summarize-label">Summarize with</span>
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="Claude">
+            <img class="essay-summarize-icon" src="/Claude_AI_symbol.svg" alt="" />
+          </a>
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="ChatGPT">
+            <img class="essay-summarize-icon" src="/chat%20gpt%20logo.svg" alt="" />
+          </a>
+          <a class="essay-summarize-btn essay-summarize-btn--icon" href="#" aria-label="Perplexity">
+            <img class="essay-summarize-icon" src="/perlexity-logo.svg" alt="" />
+          </a>
+        </div>
+      </div>
+
+      <h3>Featured essay card</h3>
+      <div class="ds-component" style="padding: 1rem; background: #f5f5f4;">
+        <a class="home-essay-card" href="#" style="display: block;">
+          <div class="home-essay-content" style="padding: 1.75rem 2rem;">
+            <span class="home-essay-badge home-essay-badge--inline" style="display: inline-flex; align-self: flex-start; margin-bottom: 1rem; box-shadow: none; background: #f5f5f4;">Essay</span>
+            <h2 class="home-essay-title">When software gets easier to build, GTM execution becomes the hard part.</h2>
+            <p class="home-essay-description">AI has made software faster and cheaper to build. The companies that win will execute GTM with precision.</p>
+            <span class="home-essay-readtime">12 min read</span>
+          </div>
+        </a>
+      </div>
+
+      <h3>Grid card</h3>
+      <div class="ds-component" style="padding: 1rem; background: #f5f5f4; max-width: 400px;">
+        <a class="grid-card" href="#">
+          <div class="grid-card-content">
+            <h3 class="grid-card-title" style="margin: 0 0 0.75rem;">What AI-native GTM actually looks like</h3>
+            <p class="grid-card-description">Lean revenue teams using AI to compress what used to require entire departments.</p>
+          </div>
+        </a>
+      </div>
+
+      <h3>Footer column</h3>
+      <div class="ds-component" style="background: #0a0a0a; padding: 2.5rem 2rem;">
+        <div class="footer-col">
+          <h3 class="footer-col-title">Writing</h3>
+          <ul>
+            <li><a href="#">Essays</a></li>
+            <li><a href="#">Short posts</a></li>
+            <li><a href="#">Playbooks</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Blockquote</h3>
+      <div class="ds-component">
+        <div class="essay-body" style="max-width: none; margin: 0;">
+          <blockquote>
+            The companies that win will not just build quickly. They will explain
+            the problem clearly, show why it matters now, and give buyers a strong
+            reason to change.
+          </blockquote>
+        </div>
+      </div>
+
+      <h3>Inline code &amp; code block</h3>
+      <div class="ds-component">
+        <div class="essay-body" style="max-width: none; margin: 0;">
+          <p style="font-size: 16px; line-height: 1.5; margin: 0 0 1rem;">
+            Inline code looks like <code>const example = true</code> in the middle of a sentence.
+          </p>
+          <pre><code>{`const greeting = (name) => {
+  return \`Hello, \${name}!\`;
+};`}</code></pre>
+        </div>
+      </div>
+
+      <h3>Horizontal rule</h3>
+      <div class="ds-component">
+        <div class="essay-body" style="max-width: none; margin: 0;">
+          <p style="font-size: 16px; margin: 0;">Section above the rule.</p>
+          <hr />
+          <p style="font-size: 16px; margin: 0;">Section below the rule.</p>
+        </div>
+      </div>
+
+      <h3>Lead paragraph</h3>
+      <div class="ds-component">
+        <div class="essay-body" style="max-width: none; margin: 0;">
+          <p>
+            A lead paragraph at the start of an essay. Slightly larger and
+            bolder than body text, it sets the tone for the piece and signals
+            the main argument.
+          </p>
+        </div>
+      </div>
+
+      <h3>Body lists</h3>
+      <div class="ds-component">
+        <div class="essay-body" style="max-width: none; margin: 0;">
+          <ul>
+            <li>First list item.</li>
+            <li>Second list item.</li>
+            <li>Third list item.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Date list item</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For dated archives (essays, short posts). Date · title · meta on
+        desktop; stacked on mobile.
+      </p>
+      <div class="ds-component">
+        <ul class="essay-list" style="margin: 0;">
+          <li class="essay-list-item">
+            <a href="#">
+              <span class="essay-list-date">Apr 26, 2026</span>
+              <span class="essay-list-title">When software gets easier to build, GTM execution becomes the hard part.</span>
+              <span class="essay-list-meta">12 min read</span>
+            </a>
+          </li>
+          <li class="essay-list-item">
+            <a href="#">
+              <span class="essay-list-date">Apr 15, 2026</span>
+              <span class="essay-list-title">What AI-native GTM actually looks like</span>
+              <span class="essay-list-meta">6 min read</span>
+            </a>
+          </li>
+          <li class="essay-list-item">
+            <a href="#">
+              <span class="essay-list-date">Apr 8, 2026</span>
+              <span class="essay-list-title">The new economics of B2B distribution</span>
+              <span class="essay-list-meta">4 min read</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <h3>Resource list (Dario-style)</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Bullet list with linked title and parenthetical metadata. For media
+        diet, references, talks.
+      </p>
+      <div class="ds-component">
+        <ul class="ds-resource-list">
+          <li>
+            <a href="#" class="ds-resource-link">Hacking Growth</a>
+            <span class="ds-resource-meta">(book, Sean Ellis)</span>
+          </li>
+          <li>
+            <a href="#" class="ds-resource-link">11:FS FinTech Marketing Podcast</a>
+            <span class="ds-resource-meta">(podcast, episode 14)</span>
+          </li>
+          <li>
+            <a href="#" class="ds-resource-link">How Anthropic's product team moves</a>
+            <span class="ds-resource-meta">(YouTube, 2026)</span>
+          </li>
+        </ul>
+      </div>
+
+      <h3>Pill / tag</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Small label for categorizing content (Book, Podcast, Tool, etc.).
+      </p>
+      <div class="ds-component">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span class="ds-pill">Book</span>
+          <span class="ds-pill">Podcast</span>
+          <span class="ds-pill">Video</span>
+          <span class="ds-pill">Tool</span>
+          <span class="ds-pill">Article</span>
+        </div>
+      </div>
+
+      <h3>Item card with image</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For tech stack tools, AI media diet items, side projects. Image +
+        category + title + description.
+      </p>
+      <div class="ds-component" style="background: #f5f5f4;">
+        <a href="#" class="ds-item-card">
+          <div class="ds-item-card-image"></div>
+          <div class="ds-item-card-body">
+            <span class="ds-pill">Tool</span>
+            <h4 class="ds-item-card-title">Linear</h4>
+            <p class="ds-item-card-description">
+              Issue tracking and project management built for high-velocity
+              engineering teams.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <h3>Item row</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Horizontal layout for mixed-media lists. Thumbnail + content side by
+        side.
+      </p>
+      <div class="ds-component">
+        <a href="#" class="ds-item-row">
+          <div class="ds-item-row-thumb"></div>
+          <div class="ds-item-row-content">
+            <span class="ds-pill">Book</span>
+            <h4 class="ds-item-card-title">Hacking Growth</h4>
+            <p class="ds-item-card-description">
+              Sean Ellis &amp; Morgan Brown. The playbook for building a
+              growth-driven company.
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <h3>External link</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Link with arrow indicating it opens elsewhere.
+      </p>
+      <div class="ds-component">
+        <p style="font-size: 16px; line-height: 1.5; margin: 0;">
+          Read the original
+          <a href="#" class="ds-external-link" target="_blank" rel="noopener">
+            interview on Lenny's Newsletter
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 3h6v6"/>
+              <path d="M11 3l-7 7"/>
+            </svg>
+          </a>
+          for the full context.
+        </p>
+      </div>
+
+      <h3>Status dot</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Inline indicator for project / item state.
+      </p>
+      <div class="ds-component">
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <span class="ds-status">
+            <span class="ds-status-dot ds-status-dot--active"></span>
+            <span>Active</span>
+          </span>
+          <span class="ds-status">
+            <span class="ds-status-dot ds-status-dot--paused"></span>
+            <span>Paused</span>
+          </span>
+          <span class="ds-status">
+            <span class="ds-status-dot ds-status-dot--archived"></span>
+            <span>Archived</span>
+          </span>
+        </div>
+      </div>
+
+      <h3>Section heading with description</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For grouping content within a page (e.g., "Books" / "Podcasts" sections in AI media diet).
+      </p>
+      <div class="ds-component">
+        <div class="ds-section-heading-block">
+          <h2 class="ds-section-heading-block-title">Books</h2>
+          <p class="ds-section-heading-block-description">
+            Books that shaped how I think about B2B GTM, AI, and product.
+          </p>
+        </div>
+      </div>
+
+      <h3>Coming soon / empty state</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Used on stub pages while content is being built.
+      </p>
+      <div class="ds-component">
+        <div class="ds-empty-state">
+          <p class="ds-empty-state-text">
+            Coming soon. New content arrives roughly every two weeks.
+          </p>
+        </div>
+      </div>
+
+      <h3>Numbered steps</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For playbooks and how-to content. Numbered list with step titles +
+        explanations.
+      </p>
+      <div class="ds-component">
+        <ol class="ds-steps">
+          <li>
+            <h4 class="ds-step-title">Define the painful problem</h4>
+            <p class="ds-step-text">
+              Start with a specific buyer pain. Use their language, not your
+              category language. The buyer should read it and feel "yes,
+              that's exactly what's happening to us."
+            </p>
+          </li>
+          <li>
+            <h4 class="ds-step-title">Identify who feels it most acutely</h4>
+            <p class="ds-step-text">
+              Narrow your ICP to the buyers with the pain, the budget, and the
+              urgency to act now &mdash; not who could theoretically use the
+              product.
+            </p>
+          </li>
+          <li>
+            <h4 class="ds-step-title">Build proof that travels</h4>
+            <p class="ds-step-text">
+              Customer stories, ROI logic, before-and-after workflows. Proof
+              that moves through the buying group without you in the room.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <h3>Callout</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Tip / info / warning blocks. Use sparingly inside long-form content.
+      </p>
+      <div class="ds-component" style="display: flex; flex-direction: column; gap: 1rem;">
+        <div class="ds-callout ds-callout--info">
+          <div class="ds-callout-label">Note</div>
+          <p class="ds-callout-text">
+            AI does not remove the need for GTM fundamentals. It punishes
+            companies that never had them.
+          </p>
+        </div>
+        <div class="ds-callout ds-callout--tip">
+          <div class="ds-callout-label">Tip</div>
+          <p class="ds-callout-text">
+            Lead with the painful problem in the buyer's language, not your
+            category language.
+          </p>
+        </div>
+        <div class="ds-callout ds-callout--warning">
+          <div class="ds-callout-label">Watch out</div>
+          <p class="ds-callout-text">
+            A demand engine without a sharp offer is just an activity machine.
+            Sharpen the offer first.
+          </p>
+        </div>
+      </div>
+
+      <h3>Stat / metric</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For results and proof points. Big number + small label.
+      </p>
+      <div class="ds-component">
+        <div class="ds-stat-grid">
+          <div class="ds-stat">
+            <div class="ds-stat-number">5,000 → 500,000</div>
+            <div class="ds-stat-label">Mina Tjänster users</div>
+          </div>
+          <div class="ds-stat">
+            <div class="ds-stat-number">1M → 20M+ SEK</div>
+            <div class="ds-stat-label">Megadeals ARR in 12 months</div>
+          </div>
+          <div class="ds-stat">
+            <div class="ds-stat-number">5x</div>
+            <div class="ds-stat-label">Sysarb inbound meetings</div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Pull quote</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Emphasized quote pulled out of body content. Larger and centered.
+      </p>
+      <div class="ds-component">
+        <figure class="ds-pullquote">
+          <blockquote class="ds-pullquote-text">
+            The market does not reward output. It rewards relevance.
+          </blockquote>
+          <figcaption class="ds-pullquote-cite">
+            From <cite>When software gets easier to build, GTM execution becomes the hard part.</cite>
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3>Image with caption</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Figure pattern for content imagery, screenshots, diagrams.
+      </p>
+      <div class="ds-component">
+        <figure class="ds-figure">
+          <div class="ds-figure-image"></div>
+          <figcaption class="ds-figure-caption">
+            Funnel illustration. Each stage where the buyer can drop off is
+            also a stage where the GTM team can compress complexity into a
+            clear next step.
+          </figcaption>
+        </figure>
+      </div>
+
+      <h3>Tag group</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Cluster of tags for multi-category items (e.g., a side project's tech
+        stack, a tool's use cases).
+      </p>
+      <div class="ds-component">
+        <div class="ds-tag-group">
+          <span class="ds-pill">Astro</span>
+          <span class="ds-pill">TypeScript</span>
+          <span class="ds-pill">Vercel</span>
+          <span class="ds-pill">Geist</span>
+          <span class="ds-pill">Source Serif 4</span>
+        </div>
+      </div>
+
+      <h3>Comparison table</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        For tech stack picks, vendor comparisons. Minimal, no zebra stripes.
+      </p>
+      <div class="ds-component" style="overflow-x: auto;">
+        <table class="ds-table">
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Best for</th>
+              <th>Pricing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Linear</td>
+              <td>Engineering velocity</td>
+              <td>From $8/seat</td>
+            </tr>
+            <tr>
+              <td>Notion</td>
+              <td>Docs &amp; wikis</td>
+              <td>Free / $10+</td>
+            </tr>
+            <tr>
+              <td>Pitch</td>
+              <td>Async decks</td>
+              <td>Free / $20+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Definition list</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Term + description pairs. For glossaries, specs, FAQ-style entries.
+      </p>
+      <div class="ds-component">
+        <dl class="ds-deflist">
+          <dt>ICP</dt>
+          <dd>
+            Ideal Customer Profile. The type of company most likely to feel
+            the pain you solve, with budget, urgency, and an internal owner.
+          </dd>
+          <dt>Demand engine</dt>
+          <dd>
+            The system that turns a market problem into buyer urgency,
+            urgency into pipeline, and pipeline into revenue.
+          </dd>
+          <dt>Compression layer</dt>
+          <dd>
+            The function that compresses market complexity into a clear
+            narrative buyers can act on.
+          </dd>
+        </dl>
+      </div>
+
+      <h3>Do / Don't</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Two-column comparison for guides and playbooks.
+      </p>
+      <div class="ds-component">
+        <div class="ds-dodont">
+          <div class="ds-dodont-col ds-dodont-col--do">
+            <div class="ds-dodont-label">Do</div>
+            <ul>
+              <li>Start with the buyer's pain in their language.</li>
+              <li>Make inaction feel more expensive than action.</li>
+              <li>Build proof that travels without you in the room.</li>
+            </ul>
+          </div>
+          <div class="ds-dodont-col ds-dodont-col--dont">
+            <div class="ds-dodont-label">Don't</div>
+            <ul>
+              <li>Lead with category language and feature lists.</li>
+              <li>Confuse motion (activity) with execution (system).</li>
+              <li>Scale a demand engine before sharpening the offer.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>Project meta</h3>
+      <p class="ds-section-note" style="margin-bottom: 1rem;">
+        Compact metadata row for project / role headers.
+      </p>
+      <div class="ds-component">
+        <dl class="ds-meta">
+          <div>
+            <dt>Year</dt>
+            <dd>2024 &mdash; Present</dd>
+          </div>
+          <div>
+            <dt>Role</dt>
+            <dd>CPO</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>
+              <span class="ds-status">
+                <span class="ds-status-dot ds-status-dot--active"></span>
+                <span>Active</span>
+              </span>
+            </dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+            <dd>TypeScript · Postgres · Anthropic</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Layout</h2>
+      <p class="ds-section-note">Container widths and breakpoints.</p>
+
+      <h3>Container widths</h3>
+      <ul class="ds-tokens">
+        <li><code>--content-width</code> · 600px · essay body, about body</li>
+        <li><code>--wide-width</code> · 800px · page-shell, intro pages</li>
+        <li>Header / home-shell · max-width 1200px</li>
+        <li>Footer inner · max-width 1200px</li>
+      </ul>
+
+      <h3>Breakpoints</h3>
+      <ul class="ds-tokens">
+        <li><code>default</code> · mobile (≤ 639px)</li>
+        <li><code>640px</code> · small tablet</li>
+        <li><code>768px</code> · tablet</li>
+        <li><code>1024px</code> · desktop</li>
+        <li><code>1280px</code> · wide desktop</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .ds-shell {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  @media (min-width: 768px) {
+    .ds-shell {
+      padding: 5rem 2.5rem 8rem;
+    }
+  }
+
+  .ds-header {
+    margin-bottom: 4rem;
+  }
+
+  .ds-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #989898;
+    margin: 0 0 0.75rem;
+  }
+
+  .ds-header h1 {
+    font-family: var(--font-sans);
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin: 0 0 1rem;
+    color: #000;
+  }
+
+  @media (min-width: 768px) {
+    .ds-header h1 {
+      font-size: 56px;
+    }
+  }
+
+  .ds-lede {
+    font-size: 17px;
+    color: #7c7c7c;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 540px;
+  }
+
+  .ds-section {
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .ds-section h2 {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 0.75rem;
+    color: #000;
+  }
+
+  @media (min-width: 768px) {
+    .ds-section h2 {
+      font-size: 32px;
+    }
+  }
+
+  .ds-section h3 {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7c7c7c;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .ds-section-note {
+    font-size: 16px;
+    color: #7c7c7c;
+    margin: 0 0 2rem;
+    max-width: 540px;
+    line-height: 1.5;
+  }
+
+  .ds-section-note code {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    background: #f3f4f6;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+  }
+
+  /* Colors */
+  .ds-color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .ds-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ds-swatch-chip {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+  }
+
+  .ds-chip-border {
+    border: 1px solid #e5e7eb;
+  }
+
+  .ds-swatch-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .ds-swatch-value {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #989898;
+  }
+
+  /* Fonts */
+  .ds-font-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .ds-font-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .ds-font {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    background: #fff;
+  }
+
+  .ds-font-sample {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 1rem;
+    color: #000;
+  }
+
+  .ds-font-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 4px;
+  }
+
+  .ds-font-value {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #989898;
+  }
+
+  /* Type stack */
+  .ds-type-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .ds-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ds-type-label {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #989898;
+  }
+
+  .ds-type-sample {
+    color: #000;
+  }
+
+  /* Spacing */
+  .ds-space-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ds-space {
+    display: grid;
+    grid-template-columns: 80px 100px 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ds-space-bar {
+    height: 14px;
+    background: #000;
+    border-radius: 2px;
+  }
+
+  .ds-space-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .ds-space-value {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #989898;
+  }
+
+  /* Radius */
+  .ds-radius-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1rem;
+  }
+
+  .ds-radius {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .ds-radius-box {
+    width: 80px;
+    height: 80px;
+    background: #000;
+  }
+
+  .ds-radius-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #989898;
+  }
+
+  /* Shadows */
+  .ds-shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .ds-shadow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1.5rem;
+  }
+
+  .ds-shadow-box {
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+  }
+
+  .ds-shadow-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .ds-shadow-value {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    color: #989898;
+  }
+
+  /* Components */
+  .ds-component {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Resource list */
+  .ds-resource-list {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+
+  .ds-resource-link {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    color: var(--color-text);
+  }
+
+  .ds-resource-meta {
+    color: #7c7c7c;
+    margin-left: 0.4em;
+    font-size: 14px;
+  }
+
+  /* Pill */
+  .ds-pill {
+    display: inline-flex;
+    align-items: center;
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1;
+    border: 1px solid #ededed;
+  }
+
+  /* Item card */
+  .ds-item-card {
+    display: block;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    max-width: 380px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .ds-item-card:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .ds-item-card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #e5e7eb, #f5f5f4);
+  }
+
+  .ds-item-card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .ds-item-card-title {
+    font-family: var(--font-sans);
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: #000;
+    margin: 0;
+  }
+
+  .ds-item-card-description {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  /* Item row */
+  .ds-item-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    text-decoration: none;
+    color: inherit;
+    padding: 1rem 0;
+  }
+
+  .ds-item-row-thumb {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e5e7eb, #f5f5f4);
+  }
+
+  .ds-item-row-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+  }
+
+  /* External link */
+  .ds-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2em;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    color: #000;
+  }
+
+  .ds-external-link svg {
+    flex-shrink: 0;
+    margin-bottom: 0.1em;
+  }
+
+  /* Status dot */
+  .ds-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: #1a1a1a;
+  }
+
+  .ds-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .ds-status-dot--active {
+    background: #22c55e;
+  }
+
+  .ds-status-dot--paused {
+    background: #eab308;
+  }
+
+  .ds-status-dot--archived {
+    background: #9ca3af;
+  }
+
+  /* Section heading block */
+  .ds-section-heading-block {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 2rem;
+  }
+
+  .ds-section-heading-block-title {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: #000;
+    margin: 0 0 0.5rem;
+  }
+
+  .ds-section-heading-block-description {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #7c7c7c;
+    margin: 0;
+    max-width: 540px;
+  }
+
+  /* Empty state */
+  .ds-empty-state {
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 1px dashed #e5e7eb;
+    border-radius: 12px;
+    background: #fafafa;
+  }
+
+  .ds-empty-state-text {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: #7c7c7c;
+    margin: 0;
+  }
+
+  /* Steps */
+  .ds-steps {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .ds-steps > li {
+    counter-increment: step;
+    padding-left: 3rem;
+    position: relative;
+  }
+
+  .ds-steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .ds-step-title {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    color: #000;
+    margin: 0.4rem 0 0.5rem;
+  }
+
+  .ds-step-text {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  /* Callout */
+  .ds-callout {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border-left: 3px solid #1a1a1a;
+    background: #fafafa;
+  }
+
+  .ds-callout--info {
+    border-left-color: #3b82f6;
+  }
+
+  .ds-callout--tip {
+    border-left-color: #22c55e;
+  }
+
+  .ds-callout--warning {
+    border-left-color: #eab308;
+  }
+
+  .ds-callout-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c7c7c;
+    margin-bottom: 0.4rem;
+  }
+
+  .ds-callout-text {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  /* Stat */
+  .ds-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .ds-stat-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .ds-stat-number {
+    font-family: var(--font-sans);
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #000;
+    margin-bottom: 0.5rem;
+  }
+
+  .ds-stat-label {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #7c7c7c;
+    line-height: 1.4;
+  }
+
+  /* Pull quote */
+  .ds-pullquote {
+    margin: 0;
+    padding: 0;
+  }
+
+  .ds-pullquote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #000;
+    margin: 0 0 1rem;
+    padding: 0;
+    border: none;
+    text-wrap: balance;
+  }
+
+  .ds-pullquote-cite {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #7c7c7c;
+    line-height: 1.5;
+  }
+
+  .ds-pullquote-cite cite {
+    font-style: normal;
+    color: #1a1a1a;
+  }
+
+  /* Figure */
+  .ds-figure {
+    margin: 0;
+  }
+
+  .ds-figure-image {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e5e7eb, #f5f5f4);
+    margin-bottom: 0.75rem;
+  }
+
+  .ds-figure-caption {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: #7c7c7c;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* Tag group */
+  .ds-tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  /* Table */
+  .ds-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 14px;
+  }
+
+  .ds-table th,
+  .ds-table td {
+    padding: 0.875rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .ds-table th {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7c7c7c;
+    border-bottom-width: 1px;
+  }
+
+  .ds-table td {
+    color: #1a1a1a;
+  }
+
+  .ds-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Definition list */
+  .ds-deflist {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .ds-deflist dt {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 0.4rem;
+  }
+
+  .ds-deflist dd {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  /* Do / Don't */
+  .ds-dodont {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .ds-dodont {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .ds-dodont-col {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    background: #fafafa;
+    border-top: 3px solid #1a1a1a;
+  }
+
+  .ds-dodont-col--do {
+    border-top-color: #22c55e;
+  }
+
+  .ds-dodont-col--dont {
+    border-top-color: #ef4444;
+  }
+
+  .ds-dodont-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c7c7c;
+    margin-bottom: 0.75rem;
+  }
+
+  .ds-dodont-col ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+
+  /* Project meta */
+  .ds-meta {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .ds-meta {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .ds-meta dt {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7c7c7c;
+    margin: 0 0 0.4rem;
+  }
+
+  .ds-meta dd {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: #1a1a1a;
+    margin: 0;
+    padding-left: 0;
+  }
+
+  /* Tokens list */
+  .ds-tokens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .ds-tokens li {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+
+  .ds-tokens code {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    background: #f3f4f6;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+  }
+</style>
