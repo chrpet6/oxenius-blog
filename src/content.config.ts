@@ -18,12 +18,13 @@ const essays = defineCollection({
 const bookmarks = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/bookmarks' }),
   schema: z.object({
-    type: z.enum(['Podcast', 'YouTube', 'LinkedIn', 'X']),
+    type: z.enum(['Podcast', 'YouTube', 'Book', 'Newsletter', 'Essay', 'Research']),
     title: z.string(),
-    source: z.string(),
+    creator: z.string(),
+    description: z.string(),
     href: z.string(),
-    date: z.coerce.date(),
     image: z.string().optional(),
+    order: z.number().optional(),
     draft: z.boolean().optional().default(false),
   }),
 });

@@ -1,5 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+
+const BRAND_ICONS = [
+  'brand-linkedin',
+  'brand-youtube',
+  'brand-x',
+  'brand-google',
+  'brand-instagram',
+  'brand-spotify',
+  'brand-apple',
+  'brand-apple-podcast',
+  'brand-github',
+  'brand-facebook',
+  'brand-threads',
+  'brand-tiktok',
+  'brand-meta',
+  'brand-openai',
+  'brand-vercel',
+  'brand-figma',
+];
+
+const UI_ICONS = [
+  'microphone',
+  'brand-youtube',
+  'book',
+  'news',
+  'file-text',
+  'world',
+  'search',
+  'menu-2',
+  'x',
+  'check',
+  'arrow-right',
+  'arrow-up-right',
+  'external-link',
+  'copy',
+  'mail',
+  'rss',
+];
 ---
 
 <BaseLayout
@@ -230,6 +269,82 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="ds-shadow-box" style="box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);"></div>
           <div class="ds-shadow-name">lg</div>
           <div class="ds-shadow-value">0 24px 60px rgba(0,0,0,0.08)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <h2>Icons</h2>
+      <p class="ds-section-note">
+        Tabler Icons via <code>astro-icon</code>. Stroke-based, monoline, 24×24 viewBox.
+        Tree-shaken at build — only icons referenced in the codebase ship to production.
+      </p>
+
+      <h3>Usage</h3>
+      <div class="ds-code">
+        <pre><code>{`---
+import { Icon } from 'astro-icon/components';
+---
+
+<Icon name="tabler:brand-linkedin" />
+<Icon name="tabler:brand-youtube" width={20} height={20} />
+<Icon name="tabler:microphone" class="my-icon" />`}</code></pre>
+      </div>
+
+      <h3>Brand</h3>
+      <p class="ds-section-note">
+        Use for social, platform, and product references. <code>tabler:brand-*</code>.
+      </p>
+      <div class="ds-icon-grid">
+        {BRAND_ICONS.map((name) => (
+          <div class="ds-icon">
+            <div class="ds-icon-tile">
+              <Icon name={`tabler:${name}`} width={28} height={28} />
+            </div>
+            <div class="ds-icon-name">{name}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3>Content & UI</h3>
+      <p class="ds-section-note">
+        General-purpose icons for navigation, actions, and content categories.
+      </p>
+      <div class="ds-icon-grid">
+        {UI_ICONS.map((name) => (
+          <div class="ds-icon">
+            <div class="ds-icon-tile">
+              <Icon name={`tabler:${name}`} width={28} height={28} />
+            </div>
+            <div class="ds-icon-name">{name}</div>
+          </div>
+        ))}
+      </div>
+
+      <h3>Sizes</h3>
+      <p class="ds-section-note">
+        Default stroke is 2. Use 16/20/24/28 for inline, 28/32 for cards, 40+ for hero usage.
+      </p>
+      <div class="ds-icon-sizes">
+        <div class="ds-icon-size">
+          <Icon name="tabler:brand-linkedin" width={16} height={16} />
+          <span>16</span>
+        </div>
+        <div class="ds-icon-size">
+          <Icon name="tabler:brand-linkedin" width={20} height={20} />
+          <span>20</span>
+        </div>
+        <div class="ds-icon-size">
+          <Icon name="tabler:brand-linkedin" width={24} height={24} />
+          <span>24</span>
+        </div>
+        <div class="ds-icon-size">
+          <Icon name="tabler:brand-linkedin" width={32} height={32} />
+          <span>32</span>
+        </div>
+        <div class="ds-icon-size">
+          <Icon name="tabler:brand-linkedin" width={48} height={48} />
+          <span>48</span>
         </div>
       </div>
     </section>
@@ -1724,5 +1839,89 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 0.15em 0.4em;
     border-radius: 4px;
     margin-right: 0.5rem;
+  }
+
+  /* Icons */
+  .ds-icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0 2rem;
+  }
+
+  .ds-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    background: #ffffff;
+    transition: border-color 0.15s ease;
+  }
+
+  .ds-icon:hover {
+    border-color: #d1d5db;
+  }
+
+  .ds-icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a1a1a;
+  }
+
+  .ds-icon-name {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    color: #7c7c7c;
+    text-align: center;
+    word-break: break-all;
+  }
+
+  .ds-icon-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin: 1rem 0 2rem;
+    padding: 1.5rem;
+    border: 1px solid #ededed;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .ds-icon-size {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: #1a1a1a;
+  }
+
+  .ds-icon-size span {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    color: #7c7c7c;
+  }
+
+  .ds-code {
+    margin: 0.75rem 0 2rem;
+  }
+
+  .ds-code pre {
+    background: #0a0a0a;
+    color: #e5e7eb;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 0;
+  }
+
+  .ds-code code {
+    font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+    font-size: 13px;
+    line-height: 1.6;
   }
 </style>

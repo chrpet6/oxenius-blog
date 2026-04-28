@@ -39,6 +39,10 @@ html {
   background: var(--color-bg);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--color-bg);
@@ -47,6 +51,11 @@ body {
   font-weight: 400;
   line-height: 1.5;
   font-feature-settings: "kern", "liga", "calt";
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
 }
 
 body.theme-light {
@@ -581,6 +590,94 @@ img {
     margin-top: 1.5rem;
     font-size: 15px;
   }
+}
+
+/* ---------- Bookmarks grouped sections ---------- */
+
+.bookmark-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 2rem 0 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-subtle);
+}
+
+.bookmark-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.95rem;
+  border: 1px solid #ededed;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.bookmark-tab-icon {
+  color: var(--color-muted);
+  flex-shrink: 0;
+}
+
+.bookmark-tab:hover .bookmark-tab-icon {
+  color: var(--color-text);
+}
+
+.bookmark-tab:hover {
+  background: #fafafa;
+  border-color: #d1d5db;
+  opacity: 1;
+}
+
+.bookmark-section {
+  margin-top: 3.5rem;
+  scroll-margin-top: 6rem;
+}
+
+.bookmark-section:first-of-type {
+  margin-top: 2.5rem;
+}
+
+.bookmark-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-subtle);
+}
+
+.bookmark-section-icon {
+  color: var(--color-muted-darker);
+  flex-shrink: 0;
+}
+
+.bookmark-section .home-grid {
+  margin-top: 1.5rem;
+}
+
+.grid-card-description.bookmark-card-creator {
+  font-size: 14px;
+}
+
+.grid-card-description.bookmark-card-why {
+  margin-top: 0.5rem;
+  font-size: 12.5px;
+  font-weight: 400;
+  color: var(--color-muted);
+  -webkit-line-clamp: 3;
 }
 
 /* ---------- Home essay grid (smaller cards below featured) ---------- */
@@ -1151,6 +1248,8 @@ article.essay {
 
 .essay-title {
   /* L (desktop ≥1200px) */
+  font-family: var(--font-serif);
+  font-style: italic;
   font-size: 47px;
   font-weight: 500;
   letter-spacing: -0.03em;
