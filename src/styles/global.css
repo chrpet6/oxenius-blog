@@ -1250,7 +1250,7 @@ article.essay {
   /* L (desktop ≥1200px) */
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 47px;
+  font-size: 52px;
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -1261,14 +1261,14 @@ article.essay {
 /* M (tablet 810–1199px) */
 @media (max-width: 1199px) {
   .essay-title {
-    font-size: 40px;
+    font-size: 44px;
   }
 }
 
 /* S (mobile <810px) */
 @media (max-width: 809px) {
   .essay-title {
-    font-size: 32px;
+    font-size: 36px;
   }
 }
 
