@@ -25,11 +25,9 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: '/', label: 'About' },
   { href: '/essays', label: 'Essays' },
-  { href: '/short-posts', label: 'Short posts' },
   { href: '/playbooks', label: 'Playbooks' },
   { href: '/tech-stack', label: 'Tech stack' },
   { href: '/bookmarks', label: 'Bookmarks' },
-  { href: '/side-projects', label: 'Side projects' },
 ];
 ---
 
@@ -123,7 +121,6 @@ const navLinks = [
               <h3 class="footer-col-title">Writing</h3>
               <ul>
                 <li><a href="/essays">Essays</a></li>
-                <li><a href="/short-posts">Short posts</a></li>
                 <li><a href="/playbooks">Playbooks</a></li>
               </ul>
             </div>
@@ -132,7 +129,6 @@ const navLinks = [
               <ul>
                 <li><a href="/tech-stack">Tech stack</a></li>
                 <li><a href="/bookmarks">Bookmarks</a></li>
-                <li><a href="/side-projects">Side projects</a></li>
               </ul>
             </div>
             <div class="footer-col">
