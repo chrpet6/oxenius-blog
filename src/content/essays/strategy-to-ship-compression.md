@@ -1,5 +1,5 @@
 ---
-title: "The new GTM advantage: compress strategy into shipped experiments"
+title: "The GTM Bottleneck Is No Longer Execution. It’s Learning Speed."
 description: "The new growth advantage is not just faster content, better automation, or more AI tools. It is the ability to turn commercial judgment into shipped market experiments with less waiting time, fewer handoffs, and more context preserved."
 pubDate: 2026-05-24
 readTime: "11 min read"
