@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('essays', ({ data }) => !data.draft && data.category === 'Blog posts'))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const featured = posts[0];
+const rest = posts.slice(1);
+---
+
+<BaseLayout title="Blog posts — Christoffer Oxenius" description="Blog posts on AI-native GTM, commercial operators, team design, growth, and B2B marketing." theme="light">
+  <div class="home-shell">
+    <section class="home-hero">
+      <h1>Blog posts</h1>
+      <p>
+        Notes and arguments on AI-native GTM, commercial operators, team design,
+        growth, and B2B marketing.
+      </p>
+    </section>
+
+    {featured && (
+      <a class="home-essay-card" href={`/essays/${featured.id}`}>
+        {featured.data.heroImage && (
+          <div class="home-essay-image">
+            <img
+              src={featured.data.heroImage}
+              alt={featured.data.heroAlt ?? ''}
+              loading="eager"
+            />
+            <span class="home-essay-badge home-essay-badge--overlay">
+              {featured.data.category ?? 'Blog posts'}
+            </span>
+          </div>
+        )}
+        <div class="home-essay-content">
+          <span class="home-essay-badge home-essay-badge--inline">
+            {featured.data.category ?? 'Blog posts'}
+          </span>
+          <h2 class="home-essay-title">{featured.data.title}</h2>
+          <p class="home-essay-description">{featured.data.description}</p>
+          {featured.data.readTime && (
+            <span class="home-essay-readtime">{featured.data.readTime}</span>
+          )}
+        </div>
+      </a>
+    )}
+
+    {rest.length > 0 && (
+      <section class="home-grid">
+        {rest.map((post) => (
+          <a class="grid-card" href={`/essays/${post.id}`}>
+            {post.data.heroImage && (
+              <div class="grid-card-image">
+                <img
+                  src={post.data.heroImage}
+                  alt={post.data.heroAlt ?? ''}
+                  loading="lazy"
+                />
+                <span class="grid-card-badge">{post.data.category ?? 'Blog posts'}</span>
+              </div>
+            )}
+            <div class="grid-card-content">
+              <h3 class="grid-card-title">{post.data.title}</h3>
+              <p class="grid-card-description">{post.data.description}</p>
+            </div>
+          </a>
+        ))}
+      </section>
+    )}
+  </div>
+</BaseLayout>
