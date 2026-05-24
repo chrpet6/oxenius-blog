@@ -14,7 +14,7 @@ const recentEssays = (await getCollection('essays', ({ data }) => !data.draft))
   .slice(0, 3);
 
 const writingHref = (entry: { id: string; data: { category?: string } }) =>
-  entry.data.category === 'Blog posts' ? `/blog-posts/${entry.id}` : `/essays/${entry.id}`;
+  `/blog-posts/${entry.id}`;
 
 const {
   title,
@@ -28,7 +28,6 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: '/', label: 'About' },
   { href: '/blog-posts', label: 'Blog posts' },
-  { href: '/essays', label: 'Essays' },
   { href: '/playbooks', label: 'Playbooks' },
   { href: '/tech-stack', label: 'Tech stack' },
   { href: '/bookmarks', label: 'Bookmarks' },
@@ -125,7 +124,6 @@ const navLinks = [
               <h3 class="footer-col-title">Writing</h3>
               <ul>
                 <li><a href="/blog-posts">Blog posts</a></li>
-                <li><a href="/essays">Essays</a></li>
                 <li><a href="/playbooks">Playbooks</a></li>
               </ul>
             </div>

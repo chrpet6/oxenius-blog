@@ -26,8 +26,8 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
-const categoryHref = category === 'Blog posts' ? '/blog-posts' : '/essays';
-const categoryLabel = category === 'Blog posts' ? 'Blog posts' : 'Essays';
+const categoryHref = '/blog-posts';
+const categoryLabel = 'Blog posts';
 ---
 
 <BaseLayout title={`${title} — Christoffer Oxenius`} description={description}>
