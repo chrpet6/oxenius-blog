@@ -1,5 +1,5 @@
 ---
-title: "How I would build a GTM team in 2026"
+title: "The GTM team I would build in 2026 if starting from scratch"
 description: "If AI makes execution cheaper, GTM teams should not just add tools to the old org chart. They should be designed around judgment, AI-native operators, specialist depth, agents and faster learning loops."
 pubDate: 2026-05-24
 readTime: "14 min read"
