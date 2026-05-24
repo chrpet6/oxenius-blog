@@ -20,7 +20,7 @@ const rest = posts.slice(1);
     </section>
 
     {featured && (
-      <a class="home-essay-card" href={`/essays/${featured.id}`}>
+      <a class="home-essay-card" href={`/blog-posts/${featured.id}`}>
         {featured.data.heroImage && (
           <div class="home-essay-image">
             <img
@@ -49,7 +49,7 @@ const rest = posts.slice(1);
     {rest.length > 0 && (
       <section class="home-grid">
         {rest.map((post) => (
-          <a class="grid-card" href={`/essays/${post.id}`}>
+          <a class="grid-card" href={`/blog-posts/${post.id}`}>
             {post.data.heroImage && (
               <div class="grid-card-image">
                 <img
