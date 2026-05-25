@@ -1,5 +1,5 @@
 ---
-title: "The AI skill everyone is underestimating: delegation"
+title: "The new AI-native skill is not prompting. It is delegation."
 description: "The next important AI skill is not writing better prompts. It is learning how to delegate work to agents, preserve judgment, and build execution loops around your own thinking."
 pubDate: 2026-05-24
 readTime: "8 min read"
