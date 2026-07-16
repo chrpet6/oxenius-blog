@@ -13,9 +13,6 @@ const recentEssays = (await getCollection('essays', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, 3);
 
-const writingHref = (entry: { id: string; data: { category?: string } }) =>
-  `/blog-posts/${entry.id}`;
-
 const {
   title,
   description = 'Essays by Christoffer Oxenius on how AI is changing go-to-market in B2B tech.',
@@ -28,8 +25,6 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: '/', label: 'About' },
   { href: '/blog-posts', label: 'Blog posts' },
-  { href: '/playbooks', label: 'Playbooks' },
-  { href: '/tech-stack', label: 'Tech stack' },
   { href: '/bookmarks', label: 'Bookmarks' },
 ];
 ---
@@ -151,7 +146,7 @@ const navLinks = [
               <ul>
                 {recentEssays.map((essay) => (
                   <li>
-                    <a href={writingHref(essay)}>{essay.data.title}</a>
+                    <a href={`/blog-posts/${essay.id}`}>{essay.data.title}</a>
                   </li>
                 ))}
               </ul>
