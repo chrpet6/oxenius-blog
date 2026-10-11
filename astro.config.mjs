@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
 
 export default defineConfig({
-  site: 'https://oxenius.com',
+  site: 'https://christofferoxenius.com',
   integrations: [icon()],
   markdown: {
     shikiConfig: {
