@@ -554,11 +554,23 @@ a.row:hover .chev {
   transform: translateX(2px);
 }
 
+.name.c-aqua { color: var(--aqua); }
+.name.c-green { color: var(--terminal); }
+.name.c-yellow { color: var(--yellow); }
+.name.c-red { color: var(--red); }
+.name.c-purple { color: var(--purple); }
+.name.c-blue { color: var(--blue); }
+.name.c-orange { color: var(--orange); }
+
 .row-sub {
   margin: -4px 0 8px 52px;
   max-width: 66ch;
   font-size: 12px;
   color: var(--muted);
+}
+
+.rows--plain .row-sub {
+  margin-left: 26px;
 }
 
 /* Prose panel */

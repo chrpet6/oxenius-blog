@@ -1,18 +1,150 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Tool = [name: string, use: string];
+type Group = { id: string; dir: string; title: string; color: string; tools: Tool[] };
+
+const groups: Group[] = [
+  {
+    id: 'sources',
+    dir: 'sources',
+    title: 'sources of truth',
+    color: 'aqua',
+    tools: [
+      ['personal wiki (github)', 'My knowledge base, organized by PARA: decisions, goals, and context. Agents start here when a task needs background.'],
+      ['mymind', 'Notes, links, images, and ideas I save. The reference library for anything that gets built or written.'],
+      ['plaud', 'Meeting transcripts. Decisions in a meeting become tasks without me retyping them.'],
+      ['asana', 'Projects and tasks. Things land here instead of only being mentioned in a chat.'],
+      ['microsoft 365', 'Outlook, Teams, SharePoint, and the Office apps for day-to-day work.'],
+      ['google workspace', 'Gmail, Calendar, Drive, Sheets, Docs, and Slides for my own company.'],
+      ['figma', 'Design templates and brand guidelines. Colors, type, and components come from here before anything gets designed.'],
+      ['hubspot', 'CRM for contacts, companies, and deals. Agents read and update it instead of keeping lists on the side.'],
+    ],
+  },
+  {
+    id: 'web',
+    dir: 'search-and-scrape',
+    title: 'search & scrape',
+    color: 'yellow',
+    tools: [
+      ['exa', 'Search engine for agents that searches on meaning, not keywords. Finds the right pages, companies, and people.'],
+      ['firecrawl', 'Searches, scrapes, and crawls the web, and can click through a page. For content on pages I already know.'],
+      ['context.dev', 'Scraping with a strength in brand data: one domain returns company profile, logo, colors, and fonts.'],
+      ['supadata', 'Turns video from YouTube, TikTok, Instagram, Facebook, and X into transcripts and metadata.'],
+      ['apify', 'A marketplace of ready-made scrapers. Used when the source already has one, like ad libraries.'],
+      ['browserbase', 'A cloud browser that logs in and clicks like a person. For sites without an API.'],
+    ],
+  },
+  {
+    id: 'people',
+    dir: 'people-and-outreach',
+    title: 'people, companies & outreach',
+    color: 'purple',
+    tools: [
+      ['prospeo', 'Finds people and companies with filters, with verified emails and mobile numbers.'],
+      ['airscale', 'Waterfall enrichment across many providers, paying only on a hit.'],
+      ['rb2b', 'Identifies website visitors, by person for US traffic and by company elsewhere.'],
+      ['unipile', 'One API for LinkedIn, email, and WhatsApp. Nothing goes out before I approve it.'],
+      ['agentmail', 'Gives an agent its own inbox, so it can sign up and receive replies without touching mine.'],
+    ],
+  },
+  {
+    id: 'data',
+    dir: 'data-and-measurement',
+    title: 'marketing data & measurement',
+    color: 'blue',
+    tools: [
+      ['windsor.ai', 'Marketing and ad data from 350+ sources. Spend and conversions across channels in one answer.'],
+      ['dataforseo', 'Search, keyword, and backlink data, plus how brands show up in AI answers.'],
+      ['posthog', 'Product analytics and session replay. Finds the funnel step where people leave, and why.'],
+    ],
+  },
+  {
+    id: 'build',
+    dir: 'build-and-run',
+    title: 'build & run',
+    color: 'green',
+    tools: [
+      ['vercel', 'Deploys web apps and agents, with a preview for every change. This site runs on it.'],
+      ['supabase', 'Database, auth, and file storage on Postgres.'],
+      ['shadcn/ui', 'UI components copied into the project and owned there.'],
+      ['trigger.dev', 'Runs long agent jobs that survive restarts and can wait for approval.'],
+      ['jev', 'Answers structured questions about a situation with probabilities instead of text. A cheap gate before a bigger model.'],
+      ['braintrust', 'Traces and evaluates agents. A weak answer becomes a test case every later version is measured against.'],
+      ['composio', 'Connects agents to 1,500+ apps and handles the auth. For apps without a direct connection.'],
+      ['1password', 'Hands agents secrets without letting them see them.'],
+    ],
+  },
+  {
+    id: 'media',
+    dir: 'media',
+    title: 'image, video, voice & diagrams',
+    color: 'orange',
+    tools: [
+      ['higgsfield', 'Video animation and image generation with control over camera, character, and motion.'],
+      ['descript', 'Edits recorded video and audio by editing the transcript.'],
+      ['elevenlabs', 'Voice and music: cloned voice, dubbing, and transcription.'],
+      ['miro', 'Diagrams and boards the team can comment on.'],
+    ],
+  },
+  {
+    id: 'skills',
+    dir: 'skills',
+    title: 'agent skills',
+    color: 'red',
+    tools: [
+      ['last30days-skill', 'Researches what was said about a topic in the last 30 days across Reddit, X, YouTube, Hacker News, and the web.'],
+      ['mattpocock/skills', 'Disciplined workflows for coding agents: interview first, then build test-driven.'],
+      ['diagram-design', 'Diagrams as HTML and SVG in the brand\'s colors and type.'],
+      ['andrej-karpathy-skills', 'Coding guidelines in a CLAUDE.md. A vague bug report becomes a failing test first.'],
+      ['marketingskills', '50 marketing skills that share one file for product, audience, and positioning.'],
+      ['hyperframes', 'Turns HTML, CSS, and animation into finished MP4 video, so an agent can write a film as code.'],
+      ['find-skills', 'Lets an agent search for a skill when a task has none, weighing installs and source reputation.'],
+    ],
+  },
+];
+
+const total = groups.reduce((n, g) => n + g.tools.length, 0);
 ---
 
 <BaseLayout
-  title="Tech Stack — Christoffer Oxenius"
-  description="The tools, platforms, and AI workflows that modern B2B GTM teams should be evaluating."
+  title="Tech stack — Christoffer Oxenius"
+  description="The tools and agent skills Christoffer Oxenius uses to run go-to-market with AI agents, and what each one is for."
 >
-  <div class="page-shell">
-    <section class="intro">
-      <h1>Tech stack</h1>
+  <div class="page">
+    <header class="page-head">
+      <p class="prompt-line"><span class="sigil">~</span>ls stack/</p>
+      <h1>tech stack</h1>
       <p>
-        The tools, platforms, and AI workflows modern B2B GTM teams should be
-        evaluating &mdash; with notes on what actually works. Coming soon.
+        The {total} tools and skills my agents and I work with, and what each
+        one is for. They are meant to be chained: find with one, enrich with
+        the next, save in a third.
       </p>
-    </section>
+      <nav class="jump" aria-label="Jump to category">
+        {groups.map((g) => (
+          <a class={`tag c-${g.color}`} href={`#${g.id}`}>{g.title}</a>
+        ))}
+      </nav>
+    </header>
+
+    {groups.map((g) => (
+      <section class="section" id={g.id}>
+        <div class="section-head">
+          <h2><span class="sigil">$</span>ls stack/{g.dir}</h2>
+          <span class="meta">{g.tools.length} entries</span>
+        </div>
+        <ul class="rows rows--plain">
+          {g.tools.map(([name, use]) => (
+            <li>
+              <div class="row">
+                <span class="chev" aria-hidden="true">›</span>
+                <span class={`name c-${g.color}`}>{name}</span>
+              </div>
+              <p class="row-sub">{use}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </BaseLayout>
