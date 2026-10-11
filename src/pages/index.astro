@@ -328,49 +328,94 @@ const appearances = [
     canvas.height = SIZE * dpr;
     const cw = SIZE / cols;
     const ch = SIZE / rows;
-    const GLYPHS = '01<>/\\{}[]$#%&*+=-:;';
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Per-cell state: offset from home position, and "energy" (how recently it was pushed)
+    const N = cols * rows;
+    const ox = new Float32Array(N);
+    const oy = new Float32Array(N);
+    const en = new Float32Array(N);
+    const jit = new Float32Array(N);
+    for (let i = 0; i < N; i++) jit[i] = 0.9 + Math.random() * 0.22;
+    const R = 58; // radius of the hole the pointer opens
 
     let pointer: { x: number; y: number } | null = null;
     let revealRow = reduced ? rows : 0;
     let raf = 0;
+    let active = false;
+
+    const step = () => {
+      active = false;
+      for (let y = 0; y < rows; y++) {
+        for (let x = 0; x < cols; x++) {
+          if (chars[y][x] === ' ') continue;
+          const i = y * cols + x;
+          let tx = 0;
+          let ty = 0;
+          let hit = false;
+          if (pointer) {
+            const dx = (x + 0.5) * cw - pointer.x;
+            const dy = (y + 0.5) * ch - pointer.y;
+            const d = Math.hypot(dx, dy) || 0.001;
+            const r = R * jit[i];
+            if (d < r) {
+              // push the glyph out to the rim of the hole
+              tx = (dx / d) * (r - d);
+              ty = (dy / d) * (r - d);
+              hit = true;
+            }
+          }
+          if (hit) {
+            ox[i] += (tx - ox[i]) * 0.4;
+            oy[i] += (ty - oy[i]) * 0.4;
+            en[i] = 1;
+          } else {
+            // drift back slowly, which leaves the wake behind the pointer
+            ox[i] *= 0.9;
+            oy[i] *= 0.9;
+            en[i] *= 0.93;
+          }
+          if (en[i] > 0.01 || Math.abs(ox[i]) > 0.05 || Math.abs(oy[i]) > 0.05) active = true;
+          else {
+            ox[i] = 0;
+            oy[i] = 0;
+            en[i] = 0;
+          }
+        }
+      }
+    };
 
     const draw = () => {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, SIZE, SIZE);
       ctx.font = `600 ${ch * 1.02}px "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace`;
       ctx.textBaseline = 'top';
-      const R = 46;
+      const revealing = revealRow < rows;
       for (let y = 0; y < Math.min(rows, Math.ceil(revealRow)); y++) {
         const fade = y > rows - 8 ? (rows - y) / 8 : 1;
         for (let x = 0; x < cols; x++) {
-          let c = chars[y][x];
+          const c = chars[y][x];
           if (c === ' ') continue;
+          const i = y * cols + x;
           const t = Number(lum[y][x]) / 9;
-          let alpha = (0.26 + 0.74 * t) * fade;
-          let color = '212, 190, 152';
-          if (pointer) {
-            const dx = (x + 0.5) * cw - pointer.x;
-            const dy = (y + 0.5) * ch - pointer.y;
-            const d = Math.hypot(dx, dy);
-            if (d < R) {
-              const k = 1 - d / R;
-              color = '184, 197, 114';
-              alpha = Math.min(1, alpha + k * 0.6);
-              if (Math.random() < k * 0.5) c = GLYPHS[(Math.random() * GLYPHS.length) | 0];
-            }
-          }
-          if (y >= Math.floor(revealRow) - 1 && revealRow < rows) color = '184, 197, 114';
-          ctx.fillStyle = `rgba(${color}, ${alpha})`;
-          ctx.fillText(c, x * cw, y * ch);
+          const e = en[i];
+          const alpha = Math.min(1, (0.26 + 0.74 * t) * fade + e * 0.75);
+          // blend from the base tone towards a bright cream as the glyph gets pushed
+          const r = 212 + (246 - 212) * e;
+          const g = 190 + (232 - 190) * e;
+          const b = 152 + (184 - 152) * e;
+          if (revealing && y >= Math.floor(revealRow) - 1) ctx.fillStyle = `rgba(184, 197, 114, ${alpha})`;
+          else ctx.fillStyle = `rgba(${r | 0}, ${g | 0}, ${b | 0}, ${alpha})`;
+          ctx.fillText(c, x * cw + ox[i], y * ch + oy[i]);
         }
       }
     };
 
     const loop = () => {
       if (revealRow < rows) revealRow += 1.4;
+      step();
       draw();
-      if (revealRow < rows || pointer) raf = requestAnimationFrame(loop);
+      if (revealRow < rows || pointer || active) raf = requestAnimationFrame(loop);
       else raf = 0;
     };
     const kick = () => {
