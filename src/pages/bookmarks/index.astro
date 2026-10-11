@@ -66,55 +66,53 @@ for (const type of SECTION_ORDER) {
     return a.title.localeCompare(b.title);
   });
 }
+const TAG_COLORS = ['aqua', 'yellow', 'purple', 'green', 'red', 'blue'];
 ---
 
 <BaseLayout
   title="Bookmarks — Christoffer Oxenius"
   description="The podcasts, YouTube channels, books, newsletters, essays, and research papers Christoffer follows."
-  theme="light"
 >
-  <div class="home-shell">
-    <section class="home-hero">
-      <h1>Bookmarks</h1>
+  <div class="page">
+    <header class="page-head">
+      <p class="prompt-line"><span class="sigil">~</span>ls bookmarks/</p>
+      <h1>bookmarks</h1>
       <p>
         The podcasts, YouTube channels, books, newsletters, essays, and
         research papers I follow and recommend. Mostly B2B GTM, AI, and how
         software companies grow.
       </p>
-    </section>
-
-    <nav class="bookmark-tabs" aria-label="Jump to category">
-      {SECTION_ORDER.map((type) => (
-        grouped[type].length > 0 && (
-          <a class="bookmark-tab" href={`#${type.toLowerCase()}`}>
-            <Icon name={TYPE_ICONS[type]} class="bookmark-tab-icon" width={15} height={15} />
-            {SECTION_TITLES[type]}
-          </a>
-        )
-      ))}
-    </nav>
+      <nav class="jump" aria-label="Jump to category">
+        {SECTION_ORDER.map((type, i) => (
+          grouped[type].length > 0 && (
+            <a class={`tag c-${TAG_COLORS[i % TAG_COLORS.length]}`} href={`#${type.toLowerCase()}`}>
+              {SECTION_TITLES[type].toLowerCase()}
+            </a>
+          )
+        ))}
+      </nav>
+    </header>
 
     {SECTION_ORDER.map((type) => (
       grouped[type].length > 0 && (
-        <section class="bookmark-section" id={type.toLowerCase()}>
-          <h2 class="bookmark-section-title">
-            <Icon name={TYPE_ICONS[type]} class="bookmark-section-icon" width={18} height={18} />
-            {SECTION_TITLES[type]}
-          </h2>
-          <div class="home-grid">
-            {grouped[type].map((b) => (
-              <a class="grid-card grid-card--bookmark" href={b.href} target="_blank" rel="noopener">
-                <div class="grid-card-image">
-                  <img src={b.image} alt="" loading="lazy" />
-                </div>
-                <div class="grid-card-content">
-                  <h3 class="grid-card-title">{b.title}</h3>
-                  <p class="grid-card-description bookmark-card-creator">{b.creator}</p>
-                  <p class="grid-card-description bookmark-card-why">{b.description}</p>
-                </div>
-              </a>
-            ))}
+        <section class="section" id={type.toLowerCase()}>
+          <div class="section-head">
+            <h2><span class="sigil">$</span>ls bookmarks/{SECTION_TITLES[type].toLowerCase().replace(/ /g, '-')}</h2>
+            <span class="meta">{grouped[type].length} entries</span>
           </div>
+          <ul class="rows">
+            {grouped[type].map((b) => (
+              <li>
+                <a class="row" href={b.href} target="_blank" rel="noopener">
+                  <span class="chev" aria-hidden="true">›</span>
+                  <Icon name={TYPE_ICONS[type]} class="ico" width={14} height={14} />
+                  <span class="name">{b.title.toLowerCase()}</span>
+                  <span class="kind">{b.creator.toLowerCase()}</span>
+                </a>
+                <p class="row-sub">{b.description}</p>
+              </li>
+            ))}
+          </ul>
         </section>
       )
     ))}

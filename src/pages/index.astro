@@ -1,95 +1,400 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import portrait from '../data/portrait.json';
+
+const LINKEDIN = 'https://www.linkedin.com/in/christofferoxenius/';
+const X = 'https://x.com/coxenius';
+
+const tags: [string, string][] = [
+  ['gtm engineering', 'aqua'],
+  ['positioning', 'green'],
+  ['demand gen', 'blue'],
+  ['abm', 'aqua'],
+  ['ai agents', 'yellow'],
+  ['claude code', 'purple'],
+  ['mcp', 'green'],
+  ['hubspot', 'orange'],
+  ['linkedin ads', 'blue'],
+  ['google ads', 'yellow'],
+  ['geo / aeo', 'red'],
+  ['lead scoring', 'aqua'],
+  ['martech', 'purple'],
+  ['vercel', 'green'],
+  ['supabase', 'aqua'],
+  ['astro', 'orange'],
+  ['framer', 'blue'],
+  ['figma', 'red'],
+  ['miro', 'yellow'],
+  ['obsidian', 'purple'],
+];
+
+const stats = [
+  { from: '5k', to: '500k', label: 'users at mina tjänster', bar: [1, 1, 2, 2, 3, 3, 4, 4] },
+  { from: 'seed', to: 'series b', label: 'minna technologies, later acquired by mastercard', bar: [1, 2, 2, 3, 3, 4, 4, 4] },
+  { from: '1M', to: '20M+', label: 'SEK ARR in 12 months at megadeals', bar: [0, 1, 1, 2, 3, 4, 4, 4] },
+  { from: '35M', to: '55M', label: 'SEK ARR in one year at sysarb, 5x inbound meetings', bar: [2, 2, 3, 3, 3, 4, 4, 4] },
+];
+
+const appearances = [
+  {
+    name: 'sean ellis / the breakout growth podcast',
+    kind: 'podcast',
+    href: 'https://music.amazon.com.mx/podcasts/a922aa1b-a740-46f1-aaf0-c833b23a9af4/episodes/8539a2eb-abab-446c-aea2-1250a5afb187/the-breakout-growth-podcast-minna-technologies-cmo-christoffer-pettersson-explains-the-advantages-of-starting-b2c-and-then-pivoting-to-b2b',
+  },
+  {
+    name: '11:fs / fintech marketing podcast',
+    kind: 'podcast',
+    href: 'https://open.spotify.com/episode/3cq5nIJ3ko43SsTNwrofOQ',
+  },
+  {
+    name: 'tony hammarlund / interview',
+    kind: 'interview',
+    href: 'https://tonyhammarlund.io/christoffer-pettersson-12/',
+  },
+  {
+    name: 'growthpodden / avsnitt 4',
+    kind: 'podcast',
+    href: 'https://medium.com/@rebelandbird/s%C3%A5-sprider-du-insikter-fr%C3%A5n-experimenti-avsnitt-4-av-growthpodden-ges-konkreta-tips-p%C3%A5-hur-du-50ba07ea4f13',
+  },
+  {
+    name: '11:fs / effective growth marketing for b2b in the 2020s',
+    kind: 'guest post',
+    href: 'https://www.11fs.com/article/what-does-effective-growth-marketing-look-like-for-b2b-in-the-2020s',
+  },
+];
 ---
 
 <BaseLayout
   title="Christoffer Oxenius"
-  description="A decade building and scaling GTM, marketing, growth, and product across B2B SaaS, FinTech, and e-commerce."
-  theme="light"
+  description="Christoffer Oxenius is a GTM engineer building the systems and AI agents that run go-to-market for B2B tech. A decade across B2B SaaS, FinTech, and e-commerce."
 >
-  <div class="home-shell">
-    <section class="about-split">
-      <div class="about-split-text">
-        <h1>Christoffer Oxenius</h1>
-        <p>
-          Christoffer Oxenius (formerly Pettersson) is currently the CPO at <a href="https://njord.io" target="_blank" rel="noopener">Njord</a>,
-          building an AI-native operating system for complex sales.
-        </p>
-        <p>
-          He has spent the last decade building and scaling GTM, marketing,
-          growth, and product across B2B SaaS, FinTech, and e-commerce, and
-          is regarded as one of the leading B2B marketers in Sweden.
-        </p>
-        <p>
-          He was the first full-time employee and later CMO at <a href="https://www.cnbc.com/2024/10/01/mastercard-to-buy-subscription-management-startup-minna-technologies.html" target="_blank" rel="noopener">Minna Technologies</a>, where he
-          helped grow the company from an early Swedish startup to a global
-          SaaS FinTech, from seed to Series B, and to around 80 people before
-          it was later acquired by Mastercard.<span class="bio-toggle"> <span class="bio-toggle-ellipsis">…</span> <a href="#" class="bio-toggle-link">More</a></span>
-        </p>
-        <p class="bio-extra" hidden>
-          Since then, he has served as CPO at <a href="https://www.megadeals.com/" target="_blank" rel="noopener">Megadeals</a>, helping grow ARR from
-          1M to 20M+ SEK in 12 months by co-building the offer, GTM strategy,
-          and demand engine, and as Head of Growth at <a href="https://www.di.se/digital/mjukvarubolaget-efter-kundrusningen-aggressiva-tillvaxtmal/" target="_blank" rel="noopener">Sysarb</a> during a year when
-          ARR grew from approximately 35M to 55M SEK and inbound booked
-          meetings increased 5x.
-        </p>
-        <p class="bio-extra" hidden>
-          He has also worked as CMO at <a href="https://www.breakit.se/artikel/35657/devotion-ska-satsa-pa-hundratals-saas-bolag-och-har-en-plan-for-att-gora-kvalitet-av-kvantitet" target="_blank" rel="noopener">Devotion Ventures</a>, leading
-          fractional CMO engagements across 10+ VC portfolio companies, helped
-          scale <a href="https://www.breakit.se/artikel/33185/mardrommen-for-spotify-storytel-och-netflix-anyfin-och-minna-technologies-gar-ihop-for-att-doda-abonnemangen" target="_blank" rel="noopener">Mina Tjänster</a> from 5,000 to 500,000 users, and built an <a href="https://www.instagram.com/karlexwatches/" target="_blank" rel="noopener">e-commerce brand</a> from
-          0 to approximately 2M SEK during university.
-        </p>
-        <p class="bio-extra" hidden>
-          He holds a Master's degree in Marketing from Gothenburg School of
-          Business, and a Bachelor's degree in Marketing from Luleå University
-          of Technology.
-        </p>
-        <p class="bio-extra" hidden>
-          Christoffer is regarded as one of the leading B2B marketers in Sweden.
-          He has been interviewed by <a href="https://tonyhammarlund.io/christoffer-pettersson-12/" target="_blank" rel="noopener">Tony Hammarlund</a>, <a href="https://music.amazon.com.mx/podcasts/a922aa1b-a740-46f1-aaf0-c833b23a9af4/episodes/8539a2eb-abab-446c-aea2-1250a5afb187/the-breakout-growth-podcast-minna-technologies-cmo-christoffer-pettersson-explains-the-advantages-of-starting-b2c-and-then-pivoting-to-b2b" target="_blank" rel="noopener">Sean Ellis</a>
-          (author of <em>Hacking Growth</em>), the <a href="https://open.spotify.com/episode/3cq5nIJ3ko43SsTNwrofOQ" target="_blank" rel="noopener">11:FS FinTech Marketing Podcast</a>,
-          and <a href="https://medium.com/@rebelandbird/s%C3%A5-sprider-du-insikter-fr%C3%A5n-experimenti-avsnitt-4-av-growthpodden-ges-konkreta-tips-p%C3%A5-hur-du-50ba07ea4f13" target="_blank" rel="noopener">Growthpodden</a>,
-          and has guest blogged on <a href="https://www.11fs.com/article/what-does-effective-growth-marketing-look-like-for-b2b-in-the-2020s" target="_blank" rel="noopener">11:FS</a>.
-          He is also an active thought leader on <a href="https://www.linkedin.com/in/christofferoxenius/" target="_blank" rel="noopener">LinkedIn</a>, with over
-          10,000 followers.
-        </p>
-        <p class="bio-extra" hidden>
-          He writes and talks about B2B GTM, positioning, AI operations, and
-          what actually moves pipeline.
-        </p>
-        <h2 class="home-list-title">Thinking &amp; Writing</h2>
-        <ul class="home-list">
-          <li><a href="/blog-posts">Blog posts</a></li>
-          <li><a href="/playbooks">Playbooks</a></li>
-          <li><a href="/tech-stack">Tech stack</a></li>
-          <li><a href="/bookmarks">Bookmarks</a></li>
-        </ul>
+  <div class="shell">
+    <section class="hero">
+      <div class="hero-portrait">
+        <canvas
+          id="portrait"
+          width="480"
+          height="480"
+          role="img"
+          aria-label="ASCII portrait of Christoffer Oxenius"
+          data-portrait={JSON.stringify(portrait)}></canvas>
+        <div class="portrait-toggles">
+          <button type="button" class="chip-btn" data-open="dlg-tldr">tl;dr</button>
+          <button type="button" class="chip-btn" data-open="dlg-now">now</button>
+        </div>
       </div>
-      <figure class="about-split-image">
-        <img
-          src="/portrait.jpg"
-          alt="Christoffer Oxenius"
-          loading="eager"
-        />
-      </figure>
+
+      <div class="hero-body">
+        <span class="stamp">agents online</span>
+        <p class="prompt-line"><span class="sigil">~</span>whoami</p>
+        <h1>christoffer oxenius</h1>
+        <p class="hero-tagline">
+          I'm a GTM engineer who builds the systems and AI agents that run
+          go-to-market for B2B tech. Friends call me Stoffe.
+        </p>
+        <p class="hero-now">
+          <span class="arrow">▸</span>building the gtm engine at
+          <a href="https://www.hivestreaming.com/" target="_blank" rel="noopener">hive streaming</a>
+          — enterprise video
+        </p>
+
+        <ul class="tags" aria-label="Skills and tools">
+          {tags.map(([label, color]) => <li class={`tag c-${color}`}>{label}</li>)}
+        </ul>
+
+        <div class="socials">
+          <a href={LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href={X} target="_blank" rel="noopener" aria-label="X">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="actions">
+          <a class="btn" href="/bookmarks">bookmarks</a>
+          <a class="btn btn--primary" href={LINKEDIN} target="_blank" rel="noopener">connect on linkedin</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Track record">
+      <div class="panel stats">
+        {stats.map((s) => (
+          <div class="stat">
+            <p class="stat-value">{s.from}<span class="to"> → </span>{s.to}</p>
+            <p class="stat-label">{s.label}</p>
+            <div class="stat-bar" aria-hidden="true">
+              {s.bar.map((l) => <i class={`l${l}`}></i>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2><span class="sigil">$</span>cat experience.log</h2>
+      </div>
+      <ol class="timeline">
+        <li style="--dot: var(--terminal)">
+          <p class="role">senior gtm engineer — hive streaming<span class="when">now</span></p>
+          <p>
+            building the gtm systems behind an enterprise video company: paid
+            media, martech and salestech, lead scoring and routing, tracking,
+            and performance reporting.
+          </p>
+        </li>
+        <li style="--dot: var(--aqua)">
+          <p class="role">cpo — megadeals / njord</p>
+          <p>
+            helped grow <a href="https://www.megadeals.com/" target="_blank" rel="noopener">megadeals</a>
+            arr from 1M to 20M+ SEK in 12 months by co-building the offer, gtm
+            strategy, and demand engine. then led product for
+            <a href="https://njord.io" target="_blank" rel="noopener">njord</a>,
+            an ai-native operating system for complex sales.
+          </p>
+        </li>
+        <li style="--dot: var(--yellow)">
+          <p class="role">head of growth — sysarb</p>
+          <p>
+            one year, <a href="https://www.di.se/digital/mjukvarubolaget-efter-kundrusningen-aggressiva-tillvaxtmal/" target="_blank" rel="noopener">arr from roughly 35M to 55M SEK</a>,
+            and 5x more inbound booked meetings.
+          </p>
+        </li>
+        <li style="--dot: var(--purple)">
+          <p class="role">cmo — devotion ventures</p>
+          <p>
+            led fractional cmo engagements across 10+
+            <a href="https://www.breakit.se/artikel/35657/devotion-ska-satsa-pa-hundratals-saas-bolag-och-har-en-plan-for-att-gora-kvalitet-av-kvantitet" target="_blank" rel="noopener">vc portfolio companies</a>.
+          </p>
+        </li>
+        <li style="--dot: var(--blue)">
+          <p class="role">first employee → cmo — minna technologies</p>
+          <p>
+            from an early swedish startup to a global saas fintech: seed to
+            series b, around 80 people, later
+            <a href="https://www.cnbc.com/2024/10/01/mastercard-to-buy-subscription-management-startup-minna-technologies.html" target="_blank" rel="noopener">acquired by mastercard</a>.
+            scaled <a href="https://www.breakit.se/artikel/33185/mardrommen-for-spotify-storytel-och-netflix-anyfin-och-minna-technologies-gar-ihop-for-att-doda-abonnemangen" target="_blank" rel="noopener">mina tjänster</a>
+            from 5,000 to 500,000 users on the way.
+          </p>
+        </li>
+        <li style="--dot: var(--orange)">
+          <p class="role">founder — e-commerce, during university</p>
+          <p>
+            built a <a href="https://www.instagram.com/karlexwatches/" target="_blank" rel="noopener">watch brand</a>
+            from 0 to roughly 2M SEK while studying. msc marketing, gothenburg
+            school of business. bsc marketing, luleå university of technology.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2><span class="sigil">$</span>cat appearances.md</h2>
+        <span class="meta">{appearances.length} entries</span>
+      </div>
+      <ul class="rows">
+        {appearances.map((a) => (
+          <li>
+            <a class="row" href={a.href} target="_blank" rel="noopener">
+              <span class="chev" aria-hidden="true">›</span>
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 2m0 3a3 3 0 0 1 3 -3h0a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3h0a3 3 0 0 1 -3 -3z"></path>
+                <path d="M5 10a7 7 0 0 0 14 0"></path>
+                <path d="M8 21l8 0"></path>
+                <path d="M12 17l0 4"></path>
+              </svg>
+              <span class="name">{a.name}</span>
+              <span class="kind">{a.kind}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2><span class="sigil">$</span>cat how-i-work.md</h2>
+      </div>
+      <div class="panel prose">
+        <p>
+          I believe agents and agent swarms should do most of the work, around
+          the clock. I try never to do a manual task more than once. The second
+          time, it becomes a system.
+        </p>
+        <p>
+          Agents use my computer faster than I do and write code better than I
+          do. What I bring is <strong>taste</strong>, <strong>creativity</strong>,
+          and a decade of knowing what moves pipeline in B2B.
+        </p>
+        <p>
+          So I instruct, give feedback, and steer. Freedom and learning come
+          before titles.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-head">
+        <h2><span class="sigil">$</span>cat contact.me</h2>
+      </div>
+      <div class="panel">
+        <div class="kv-row">
+          <span class="k">linkedin:</span>
+          <a href={LINKEDIN} target="_blank" rel="noopener">in/christofferoxenius</a>
+        </div>
+        <div class="kv-row">
+          <span class="k">x:</span>
+          <a href={X} target="_blank" rel="noopener">@coxenius</a>
+        </div>
+        <div class="kv-row">
+          <span class="k">based:</span>
+          <span>göteborg, sweden</span>
+        </div>
+        <div class="kv-foot">
+          <p>B2B GTM, positioning, AI operations. Happy to compare notes...</p>
+          <a class="btn btn--send" href={LINKEDIN} target="_blank" rel="noopener">send</a>
+        </div>
+      </div>
     </section>
   </div>
+
+  <dialog class="term" id="dlg-tldr" aria-labelledby="dlg-tldr-title">
+    <div class="dlg-head">
+      <span id="dlg-tldr-title">tl;dr</span>
+      <button type="button" data-close>esc</button>
+    </div>
+    <ul>
+      <li>a decade in gtm, marketing, growth, and product</li>
+      <li>first employee and cmo at minna technologies, acquired by mastercard</li>
+      <li>megadeals: 1M to 20M+ SEK arr in 12 months</li>
+      <li>now: gtm engineer, building with ai agents</li>
+    </ul>
+    <p class="dlg-foot">↻ b2b saas, fintech, e-commerce</p>
+  </dialog>
+
+  <dialog class="term" id="dlg-now" aria-labelledby="dlg-now-title">
+    <div class="dlg-head">
+      <span id="dlg-now-title">now</span>
+      <button type="button" data-close>esc</button>
+    </div>
+    <ul>
+      <li>senior gtm engineer at hive streaming</li>
+      <li>wiring up agents to run gtm operations</li>
+      <li>writing about b2b gtm and ai on linkedin</li>
+      <li>based in göteborg, sweden</li>
+    </ul>
+    <p class="dlg-foot">↻ updated when it changes</p>
+  </dialog>
 </BaseLayout>
 
 <script>
-  const link = document.querySelector<HTMLAnchorElement>('.bio-toggle-link');
-  const ellipsis = document.querySelector<HTMLElement>('.bio-toggle-ellipsis');
-  const extras = document.querySelectorAll<HTMLElement>('.bio-extra');
-
-  link?.addEventListener('click', (e) => {
-    e.preventDefault();
-    const expanded = link.textContent === 'Less';
-    extras.forEach((p) => {
-      p.hidden = expanded;
+  // Dialogs
+  document.querySelectorAll<HTMLButtonElement>('[data-open]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const dlg = document.getElementById(btn.dataset.open!) as HTMLDialogElement | null;
+      dlg?.showModal();
     });
-    link.textContent = expanded ? 'More' : 'Less';
-    if (ellipsis) {
-      ellipsis.style.display = expanded ? '' : 'none';
-    }
   });
+  document.querySelectorAll<HTMLDialogElement>('dialog.term').forEach((dlg) => {
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg || (e.target as HTMLElement).closest('[data-close]')) dlg.close();
+    });
+  });
+
+  // ASCII portrait
+  const canvas = document.getElementById('portrait') as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext('2d');
+  if (canvas && ctx) {
+    const { cols, rows, chars, lum } = JSON.parse(canvas.dataset.portrait!) as {
+      cols: number;
+      rows: number;
+      chars: string[];
+      lum: string[];
+    };
+    const SIZE = 480;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = SIZE * dpr;
+    canvas.height = SIZE * dpr;
+    const cw = SIZE / cols;
+    const ch = SIZE / rows;
+    const GLYPHS = '01<>/\\{}[]$#%&*+=-:;';
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let pointer: { x: number; y: number } | null = null;
+    let revealRow = reduced ? rows : 0;
+    let raf = 0;
+
+    const draw = () => {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      ctx.font = `600 ${ch * 1.02}px "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace`;
+      ctx.textBaseline = 'top';
+      const R = 46;
+      for (let y = 0; y < Math.min(rows, Math.ceil(revealRow)); y++) {
+        const fade = y > rows - 8 ? (rows - y) / 8 : 1;
+        for (let x = 0; x < cols; x++) {
+          let c = chars[y][x];
+          if (c === ' ') continue;
+          const t = Number(lum[y][x]) / 9;
+          let alpha = (0.26 + 0.74 * t) * fade;
+          let color = '212, 190, 152';
+          if (pointer) {
+            const dx = (x + 0.5) * cw - pointer.x;
+            const dy = (y + 0.5) * ch - pointer.y;
+            const d = Math.hypot(dx, dy);
+            if (d < R) {
+              const k = 1 - d / R;
+              color = '184, 197, 114';
+              alpha = Math.min(1, alpha + k * 0.6);
+              if (Math.random() < k * 0.5) c = GLYPHS[(Math.random() * GLYPHS.length) | 0];
+            }
+          }
+          if (y >= Math.floor(revealRow) - 1 && revealRow < rows) color = '184, 197, 114';
+          ctx.fillStyle = `rgba(${color}, ${alpha})`;
+          ctx.fillText(c, x * cw, y * ch);
+        }
+      }
+    };
+
+    const loop = () => {
+      if (revealRow < rows) revealRow += 1.4;
+      draw();
+      if (revealRow < rows || pointer) raf = requestAnimationFrame(loop);
+      else raf = 0;
+    };
+    const kick = () => {
+      if (!raf) raf = requestAnimationFrame(loop);
+    };
+
+    if (!reduced) {
+      canvas.addEventListener('pointermove', (e) => {
+        const r = canvas.getBoundingClientRect();
+        pointer = {
+          x: ((e.clientX - r.left) / r.width) * SIZE,
+          y: ((e.clientY - r.top) / r.height) * SIZE,
+        };
+        kick();
+      });
+      const clear = () => {
+        pointer = null;
+        kick();
+      };
+      canvas.addEventListener('pointerleave', clear);
+      canvas.addEventListener('pointercancel', clear);
+    }
+
+    const start = () => (reduced ? draw() : kick());
+    if (document.fonts?.ready) document.fonts.ready.then(start);
+    else start();
+  }
 </script>
