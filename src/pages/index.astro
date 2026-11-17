@@ -444,10 +444,3 @@ const appearances = [
     else start();
   }
 </script>
-
-<!-- TEST: redirect the start page to LinkedIn (same tab) after 3 seconds. -->
-<script is:inline define:vars={{ LINKEDIN }}>
-  setTimeout(() => {
-    window.location.href = LINKEDIN;
-  }, 3000);
-</script>
