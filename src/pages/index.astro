@@ -444,3 +444,12 @@ const appearances = [
     else start();
   }
 </script>
+
+<!-- TEST: open LinkedIn in a new tab 3 seconds after the start page loads.
+     Browsers block window.open without a click, so `win` is often null. -->
+<script is:inline define:vars={{ LINKEDIN }}>
+  setTimeout(() => {
+    const win = window.open(LINKEDIN, '_blank', 'noopener');
+    console.log('[linkedin-tab]', win ? 'opened' : 'blocked or no handle (noopener)');
+  }, 3000);
+</script>
