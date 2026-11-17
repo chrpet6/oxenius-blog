@@ -445,11 +445,9 @@ const appearances = [
   }
 </script>
 
-<!-- TEST: open LinkedIn in a new tab 3 seconds after the start page loads.
-     Browsers block window.open without a click, so `win` is often null. -->
+<!-- TEST: redirect the start page to LinkedIn (same tab) after 3 seconds. -->
 <script is:inline define:vars={{ LINKEDIN }}>
   setTimeout(() => {
-    const win = window.open(LINKEDIN, '_blank', 'noopener');
-    console.log('[linkedin-tab]', win ? 'opened' : 'blocked or no handle (noopener)');
+    window.location.href = LINKEDIN;
   }, 3000);
 </script>
